@@ -8,26 +8,39 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
-@ToString
 public class HocPhanTheoNienGiam {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @MapsId
-    @OneToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "maHocPhan")
     private HocPhan hocPhan;
-//    @Id
-//    @OneToOne
-//    @JoinColumn(name = "id")
-//    private HocPhan hocPhan;
-    private int hocKy;
-    @ManyToOne
-    @JoinColumn(name = "maNganh")
-    private Nganh nganh;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "maHocKy")
+    private HocKyNienGiam hocKyNienGiam;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "maNhomHocPhanTuChon")
     private NhomHocPhanTuChon nhomHocPhanTuChon;
 
+    public HocPhanTheoNienGiam(HocPhan hocPhan, HocKyNienGiam hocKyNienGiam) {
+        this.hocPhan = hocPhan;
+        this.hocKyNienGiam = hocKyNienGiam;
+    }
 
+    public HocPhanTheoNienGiam(Long maHocPhan){
+        this.hocPhan = new HocPhan(maHocPhan);
+    }
 
+    public HocPhanTheoNienGiam(long maHocPhan, long maHocKyNienGiam) {
+        this.hocPhan = new HocPhan(maHocPhan);
+        this.hocKyNienGiam = new HocKyNienGiam(maHocKyNienGiam);
+    }
+
+    @Override
+    public String toString() {
+        return "HocPhanTheoNienGiam{" +
+                "id=" + id +
+                ", hocPhan=" + hocPhan +
+                ", hocKyNienGiam=" + hocKyNienGiam;
+    }
 }

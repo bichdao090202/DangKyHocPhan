@@ -15,6 +15,15 @@ public class Nganh {
     @ManyToOne @JoinColumn(name = "maKhoa")
     private Khoa khoa;
 
+    public Nganh(long maNganh) {
+        this.maNganh = maNganh;
+    }
+
+    public Nganh(String tenNganh, Khoa khoa) {
+        this.tenNganh = tenNganh;
+        this.khoa = khoa;
+    }
+
     @Override
     public String toString() {
         return "Nganh{" +
