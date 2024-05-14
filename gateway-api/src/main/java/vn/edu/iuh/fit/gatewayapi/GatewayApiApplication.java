@@ -1,4 +1,4 @@
-package vn.edu.iuh.fit.hocphanservice;
+package vn.edu.iuh.fit.gatewayapi;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.servers.Server;
@@ -8,11 +8,12 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@OpenAPIDefinition(servers = {@Server(url = "/HocPhanService", description = "Default Server URL")})
-public class HocPhanServiceApplication {
+@OpenAPIDefinition(servers = {@Server(url = "/gateway", description = "Default Server URL")})
+public class GatewayApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HocPhanServiceApplication.class, args);
+		SpringApplication.run(GatewayApiApplication.class, args);
 	}
+
 
 }
