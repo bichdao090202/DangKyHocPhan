@@ -37,7 +37,7 @@ public class HocPhanController {
         if (hocPhanTienQuyet == null) {
             return "false";
         }
-        return "true";
+        return hocPhanTienQuyet.toString();
     }
 
     @GetMapping("/getHocPhanTienQuyet/{id}")

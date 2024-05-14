@@ -13,7 +13,7 @@ public class HocKyNienGiamRequest {
     private long maNganh;
     private int khoa;
     private int hocKy;
-    private List<Long> hocPhanTheoNienGiam;
+    private List<Long> hocPhanTheoNienGiam; 
 
     // body example:
     // {

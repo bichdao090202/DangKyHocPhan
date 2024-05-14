@@ -24,32 +24,7 @@ public class HocPhanService {
     @Autowired
     private NhomHocPhanTuChonRepository nhomHocPhanTuChonRepository;
 
-
-
 //  Khoa - Nganh
-    public Khoa createKhoa(Khoa khoa) {
-        boolean isExist = khoaRepository.existsByTenKhoa(khoa.getTenKhoa());
-        if (isExist) {
-            return null;
-        }
-        return khoaRepository.save(khoa);
-    }
-
-    public Nganh createNganh(Nganh nganh) {
-        return nganhRepository.save(nganh);
-    }
-
-    public Khoa updateKhoa(Khoa khoa) {
-        return khoaRepository.save(khoa);
-    }
-
-    public Nganh updateNganh(Nganh nganh) {
-        return nganhRepository.save(nganh);
-    }
-
-    public Khoa getKhoaById(long id) {
-        return khoaRepository.findById(id).orElse(null);
-    }
 
 
 //    HocPhan

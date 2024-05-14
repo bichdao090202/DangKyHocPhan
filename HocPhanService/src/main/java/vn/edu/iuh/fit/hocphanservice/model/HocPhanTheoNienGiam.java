@@ -15,8 +15,8 @@ public class HocPhanTheoNienGiam {
     @ManyToOne
     @JoinColumn(name = "maHocPhan")
     private HocPhan hocPhan;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "maHocKy")
+    @ManyToOne
+    @JoinColumn(name = "maHocKyNienGiam")
     private HocKyNienGiam hocKyNienGiam;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "maNhomHocPhanTuChon")
