@@ -81,7 +81,7 @@ public class KhoaNganhController {
     @GetMapping("/getNganhByKhoa/{id}")
     public String getNganhByKhoa(@PathVariable long id) {
         List<Nganh> nganhList = khoaNganhService.getNganhByKhoa(id);
-        return nganhList==null ?
+        return nganhList == null ?
                 "false"     //mã khoa không tồn tại
                 : nganhList.toString();
     }
