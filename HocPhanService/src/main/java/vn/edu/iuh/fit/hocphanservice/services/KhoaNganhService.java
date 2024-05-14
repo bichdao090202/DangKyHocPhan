@@ -20,6 +20,14 @@ public class KhoaNganhService {
     @Autowired
     private HocPhanRepository hocPhanRepository;
 
+    public Khoa getKhoaById(long id) {
+        return khoaRepository.findById(id).orElse(null);
+    }
+
+    public Nganh getNganhById(long id) {
+        return nganhRepository.findById(id).orElse(null);
+    }
+
     public Khoa createKhoa(String tenKhoa) {
         boolean isExist = khoaRepository.existsByTenKhoa(tenKhoa);
         if (isExist) {
@@ -56,14 +64,6 @@ public class KhoaNganhService {
         }
         nganh.setTenNganh(tenNganh);
         return nganhRepository.save(nganh);
-    }
-
-    public Khoa getKhoaById(long id) {
-        return khoaRepository.findById(id).orElse(null);
-    }
-
-    public Nganh getNganhById(long id) {
-        return nganhRepository.findById(id).orElse(null);
     }
 
     public boolean deleteKhoa(long id) {

@@ -5,7 +5,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import vn.edu.iuh.fit.hocphanservice.model.Khoa;
+import vn.edu.iuh.fit.hocphanservice.model.Nganh;
 import vn.edu.iuh.fit.hocphanservice.services.KhoaNganhService;
+
+import java.util.List;
 
 @RestController
 public class KhoaNganhController {
@@ -14,62 +18,71 @@ public class KhoaNganhController {
 
     @GetMapping("/getKhoaById/{id}")
     public String getKhoaById(@PathVariable long id) {
-        return khoaNganhService.getKhoaById(id)==null?
+        Khoa khoa = khoaNganhService.getKhoaById(id);
+        return khoa == null ?
                 "false"     //mã khoa không tồn tại
-                :"true";
+                : khoa.toString();
     }
 
     @GetMapping("/getNganhById/{id}")
     public String getNganhById(@PathVariable long id) {
-        return khoaNganhService.getNganhById(id)==null?
+        Nganh nganh = khoaNganhService.getNganhById(id);
+        return nganh == null ?
                 "false"     //mã ngành không tồn tại
-                :"true";
+                : nganh.toString();
     }
 
     @PostMapping("/createKhoa/{tenKhoa}")
     public String createKhoa(@PathVariable String tenKhoa) {
-        return khoaNganhService.createKhoa(tenKhoa)==null?
+        Khoa khoa = khoaNganhService.createKhoa(tenKhoa);
+        return khoa == null ?
                 "false"     //tên khoa đã tồn tại
-                :"true";
+                : khoa.toString();
     }
 
     @PostMapping("/createNganh/{maKhoa}/{tenNganh}")
     public String createNganh(@PathVariable String tenNganh, @PathVariable long maKhoa) {
-        return khoaNganhService.createNganh(tenNganh, maKhoa)==null?
+        Nganh nganh = khoaNganhService.createNganh(tenNganh, maKhoa);
+        return nganh == null ?
                 "false"     //tên ngành đã tồn tại hoặc mã khoa không tồn tại
-                :"true";
+                : nganh.toString();
     }
 
     @PostMapping("/updateTenKhoa/{maKhoa}/{tenKhoa}")
     public String updateTenKhoa(@PathVariable long maKhoa, @PathVariable String tenKhoa) {
-        return khoaNganhService.updateTenKhoa(maKhoa, tenKhoa)==null?
+        Khoa khoa = khoaNganhService.updateTenKhoa(maKhoa, tenKhoa);
+        return khoa == null ?
                 "false"     //mã khoa không tồn tại
-                :"true";
+                : khoa.toString();
     }
 
     @PostMapping("/updateTenNganh/{maNganh}/{tenNganh}")
     public String updateTenNganh(@PathVariable long maNganh, @PathVariable String tenNganh) {
-        return khoaNganhService.updateTenNganh(maNganh, tenNganh)==null?
+        Nganh nganh = khoaNganhService.updateTenNganh(maNganh, tenNganh);
+        return nganh == null ?
                 "false"     //mã ngành không tồn tại
-                :"true";
+                : nganh.toString();
     }
 
     @PostMapping("/deleteKhoa/{id}")
     public String deleteKhoa(@PathVariable long id) {
-        return !khoaNganhService.deleteKhoa(id)?
+        return !khoaNganhService.deleteKhoa(id) ?
                 "false"     //khoa này còn ngành đang hoạt động
-                :"true";
+                : "true";
     }
 
     @PostMapping("/deleteNganh/{id}")
     public String deleteNganh(@PathVariable long id) {
-        return !khoaNganhService.deleteNganh(id)?
+        return !khoaNganhService.deleteNganh(id) ?
                 "false"     //ngành này đã có học phần
-                :"true";
+                : "true";
     }
 
     @GetMapping("/getNganhByKhoa/{id}")
     public String getNganhByKhoa(@PathVariable long id) {
-        return khoaNganhService.getNganhByKhoa(id).toString();
+        List<Nganh> nganhList = khoaNganhService.getNganhByKhoa(id);
+        return nganhList==null ?
+                "false"     //mã khoa không tồn tại
+                : nganhList.toString();
     }
 }
