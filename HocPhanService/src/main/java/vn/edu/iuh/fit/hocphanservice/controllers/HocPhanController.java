@@ -12,10 +12,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/HocPhanService")
 public class HocPhanController {
     @Autowired
     private HocPhanService hocPhanService;
 
+
+    @GetMapping()
+    public String HocPhanService(){
+        return "HocPhanService";
+    }
     @PostMapping("/createHocPhan")
     public String createHocPhan(@RequestBody HocPhanRequest hocPhanDto) {
         HocPhan hocPhan = new HocPhan(hocPhanDto.getTen(),
