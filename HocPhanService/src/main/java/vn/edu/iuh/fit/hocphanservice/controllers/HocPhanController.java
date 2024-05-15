@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.hocphanservice.dtos.request.HocKyNienGiamRequest;
 import vn.edu.iuh.fit.hocphanservice.dtos.request.HocPhanRequest;
 import vn.edu.iuh.fit.hocphanservice.dtos.request.HocPhanTheoNienGiamRequest;
+import vn.edu.iuh.fit.hocphanservice.dtos.res.HocPhanTheoNienGiamResponse;
 import vn.edu.iuh.fit.hocphanservice.model.HocKyNienGiam;
 import vn.edu.iuh.fit.hocphanservice.model.HocPhan;
-import vn.edu.iuh.fit.hocphanservice.model.HocPhanTheoNienGiam;
 import vn.edu.iuh.fit.hocphanservice.model.HocPhanTienQuyet;
 import vn.edu.iuh.fit.hocphanservice.services.HocPhanService;
 
@@ -78,7 +78,7 @@ public class HocPhanController {
     //     "maNganh": 3,
     //     "khoa": 16,
     //     "hocKy": 1,
-    //     "hocPhanTheoNienGiam": [1, 2, 3] //Option []
+    //     "hocPhanTheoNienGiam": [1, 2, 3] //Option
     // }
     @PostMapping("/createHocKyNienGiam")
     public String createHocKyNienGiam(@RequestBody HocKyNienGiamRequest hocKyNienGiamRequest) {
@@ -88,18 +88,18 @@ public class HocPhanController {
         return hocKyNienGiam.toString();
     }
 
-
-    @GetMapping("/getHocPhanTheoNienGiamByNganhAndKhoa/{maNganh}/{khoa}")
-    public String getHocPhanTheoNienGiamByNganhAndKhoa(@PathVariable long maNganh, @PathVariable int khoa) {
-        return hocPhanService.findHocPhanTheoNienGiamByNganhAndKhoa(maNganh, khoa).toString();
-    }
-//
     @PostMapping("/themHocPhanVaoNienGiam")
     public String themHocPhanVaoNienGiam(@RequestBody HocPhanTheoNienGiamRequest hocPhanTheoNienGiamRequest) {
-        HocPhanTheoNienGiam hocPhanTheoNienGiam = new HocPhanTheoNienGiam(hocPhanTheoNienGiamRequest.getMaHocPhan(), hocPhanTheoNienGiamRequest.getMaHocKyNienGiam());
-        if (hocPhanService.themHocPhanVaoNienGiam(hocPhanTheoNienGiam) == null) {
-            return "false";
-        }
-        return "true";
+        return hocPhanService.themHocPhanVaoNienGiam(hocPhanTheoNienGiamRequest) ? "true" : "false";
     }
+
+    @GetMapping("/getNienGiamByNganhAndKhoa")
+    public String getNienGiamByNganhAndKhoa(@RequestParam long maNganh, @RequestParam int khoa) {
+        List<HocPhanTheoNienGiamResponse> hocKyNienGiam = hocPhanService.getNienGiamByNganhAndKhoa(maNganh, khoa);
+        if (hocKyNienGiam == null)
+            return "false";
+        return hocKyNienGiam.toString();
+    }
+
+
 }

@@ -44,7 +44,7 @@ public class HocKyNienGiam {
                 ", khoa=" + khoa +
                 ", hocKy=" + hocKy +
                 ", soTinChi=" + soTinChi +
-                ", nhomHocPhanTuChon=" + nhomHocPhanTuChon +
+//                ", nhomHocPhanTuChon=" + nhomHocPhanTuChon +
                 ", hocPhanTheoNienGiam=" + hocPhanTheoNienGiam +
                 '}';
     }

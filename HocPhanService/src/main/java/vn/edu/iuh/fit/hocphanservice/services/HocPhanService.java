@@ -4,11 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import vn.edu.iuh.fit.hocphanservice.dtos.request.HocKyNienGiamRequest;
 import vn.edu.iuh.fit.hocphanservice.dtos.request.HocPhanRequest;
+import vn.edu.iuh.fit.hocphanservice.dtos.request.HocPhanTheoNienGiamRequest;
+import vn.edu.iuh.fit.hocphanservice.dtos.res.HocPhanResponse;
+import vn.edu.iuh.fit.hocphanservice.dtos.res.HocPhanTheoNienGiamResponse;
 import vn.edu.iuh.fit.hocphanservice.model.*;
 import vn.edu.iuh.fit.hocphanservice.repositories.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class HocPhanService {
@@ -84,22 +89,55 @@ public class HocPhanService {
         HocKyNienGiam hocKyNienGiam = new HocKyNienGiam(hocKyNienGiamRequest.getMaNganh(), hocKyNienGiamRequest.getKhoa(), hocKyNienGiamRequest.getHocKy());
         if (hocKyNienGiamRepository.existsByNganhAndKhoaAndHocKy(hocKyNienGiam.getNganh(), hocKyNienGiam.getKhoa(), hocKyNienGiam.getHocKy()))
             return null;    // đã tồn tại học kỳ niên giảm
-        if (hocKyNienGiam.getHocPhanTheoNienGiam().isEmpty())
-            return hocKyNienGiamRepository.save(hocKyNienGiam); // chỉ tạo học kỳ
-        List<HocPhanTheoNienGiam> hocPhanTheoNienGiamList = new ArrayList<>();
-        for (Long t : hocKyNienGiamRequest.getHocPhanTheoNienGiam()) {
-            HocPhanTheoNienGiam hocPhanTheoNienGiam = new HocPhanTheoNienGiam(new HocPhan(t), hocKyNienGiam);
-            hocPhanTheoNienGiamRepository.save(hocPhanTheoNienGiam);        //thêm học phần vào học kỳ niên giảm
-            hocPhanTheoNienGiamList.add(hocPhanTheoNienGiam);
-        }
-        hocKyNienGiam.setHocPhanTheoNienGiam(hocPhanTheoNienGiamList);
+        if (!nganhRepository.existsById(hocKyNienGiamRequest.getMaNganh()))
+            return null;    // mã ngành không tồn tại
         hocKyNienGiamRepository.save(hocKyNienGiam);
-        return hocKyNienGiam;
+        if (hocKyNienGiamRequest.getHocPhanTheoNienGiam()==null)
+            return hocKyNienGiam;
+        for (Long id : hocKyNienGiamRequest.getHocPhanTheoNienGiam()) {
+            HocPhanTheoNienGiam hocPhanTheoNienGiam = new HocPhanTheoNienGiam(new HocPhan(id), hocKyNienGiam);
+            hocPhanTheoNienGiamRepository.save(hocPhanTheoNienGiam);        //thêm học phần vào học kỳ niên giảm
+        }
+        return hocKyNienGiam; // chỉ tạo học kỳ
     }
 
-    public HocPhanTheoNienGiam themHocPhanVaoNienGiam(HocPhanTheoNienGiam hocPhanTheoNienGiam) {
-        return hocPhanTheoNienGiamRepository.save(hocPhanTheoNienGiam);
+    public boolean themHocPhanVaoNienGiam(HocPhanTheoNienGiamRequest hocPhanTheoNienGiamRequest) {
+        if (!hocPhanRepository.existsById(hocPhanTheoNienGiamRequest.getMaHocPhan()))
+            return false;       // không tìm thấy mã học phần
+        if (!hocKyNienGiamRepository.existsById(hocPhanTheoNienGiamRequest.getMaHocKyNienGiam()))
+            return false;       // không tìm thấy mã học kỳ niên giảm
+        HocPhan hocPhan = new HocPhan(hocPhanTheoNienGiamRequest.getMaHocPhan());
+        HocKyNienGiam hocKyNienGiam = new HocKyNienGiam(hocPhanTheoNienGiamRequest.getMaHocKyNienGiam());
+        HocPhanTheoNienGiam hocPhanTheoNienGiam = new HocPhanTheoNienGiam(hocPhanTheoNienGiamRequest.getMaHocPhan(), hocPhanTheoNienGiamRequest.getMaHocKyNienGiam());
+        if (!hocPhanTheoNienGiamRepository.existsByHocPhanAndHocKyNienGiam(hocPhan, hocKyNienGiam))
+            hocPhanTheoNienGiamRepository.save(hocPhanTheoNienGiam);
+        return true;
     }
+
+    public List<HocPhanTheoNienGiamResponse> getNienGiamByNganhAndKhoa(long maNganh, int khoa) {
+        List<HocKyNienGiam> hocKyNienGiamList = hocKyNienGiamRepository.findByNganhAndKhoa(maNganh, khoa);
+        if (hocKyNienGiamList == null)
+            return null;    // không tìm thấy học kỳ niên giảm
+        List<HocPhanTheoNienGiamResponse> hocPhanTheoNienGiamResponseList = new ArrayList<>();
+        for (HocKyNienGiam hocKyNienGiam : hocKyNienGiamList) {
+            HocPhanTheoNienGiamResponse hocPhanTheoNienGiamResponse = getHocPhanTheoNienGiamResponse(hocKyNienGiam);
+            hocPhanTheoNienGiamResponseList.add(hocPhanTheoNienGiamResponse);
+        }
+        System.out.println(hocPhanTheoNienGiamResponseList);
+        return hocPhanTheoNienGiamResponseList;
+    }
+
+    private static HocPhanTheoNienGiamResponse getHocPhanTheoNienGiamResponse(HocKyNienGiam hocKyNienGiam) {
+        HocPhanTheoNienGiamResponse hocPhanTheoNienGiamResponse = new HocPhanTheoNienGiamResponse();
+        hocPhanTheoNienGiamResponse.setMaHocKyNienGiam(hocKyNienGiam.getMaHocKyNienGiam());
+        hocPhanTheoNienGiamResponse.setHocKy(hocKyNienGiam.getHocKy());
+        for (HocPhanTheoNienGiam hocPhanTheoNienGiam : hocKyNienGiam.getHocPhanTheoNienGiam()){
+            HocPhanResponse hocPhanResponse = new HocPhanResponse(hocPhanTheoNienGiam.getHocPhan());
+            hocPhanTheoNienGiamResponse.addHocPhanResponse(hocPhanResponse);
+        }
+        return hocPhanTheoNienGiamResponse;
+    }
+
 
     public List<HocKyNienGiam> getHocKyNienGiamByNganhAndKhoa(long maNganh, long khoa) {
         return hocKyNienGiamRepository.findByNganhAndKhoa(new Nganh(maNganh), khoa);
@@ -109,15 +147,9 @@ public class HocPhanService {
         return hocKyNienGiamRepository.findByNganhAndKhoaAndHocKy(new Nganh(maNganh), khoa, hocKy);
     }
 
-
-    public List<HocPhanTheoNienGiam> findHocPhanTheoNienGiamByNganhAndKhoa(long maNganh, int khoa) {
-        List<HocKyNienGiam> hocKyNienGiam = hocKyNienGiamRepository.findByNganhAndKhoa(new Nganh(maNganh), khoa);
-        System.out.println(hocKyNienGiam);
-        return null;
-//        return hocPhanTheoNienGiamRepository.findByNganhAndKhoa(new Nganh(maNganh),khoa);
-    }
-
     public boolean existsHocPhan(long id) {
         return hocPhanRepository.existsById(id);
     }
+
+
 }

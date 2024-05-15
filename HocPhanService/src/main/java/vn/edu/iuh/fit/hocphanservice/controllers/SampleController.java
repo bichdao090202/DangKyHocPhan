@@ -62,10 +62,4 @@ public class SampleController {
     }
 
 
-    @GetMapping("/createDataSample3")
-    public String createDataSample3() {
-        HocPhanTheoNienGiam hocPhanTheoNienGiam = new HocPhanTheoNienGiam(1,1);
-        return hocPhanService.themHocPhanVaoNienGiam(hocPhanTheoNienGiam).toString();
-    }
-
 }

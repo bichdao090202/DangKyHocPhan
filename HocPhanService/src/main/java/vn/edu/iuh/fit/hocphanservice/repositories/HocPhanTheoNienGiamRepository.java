@@ -13,4 +13,8 @@ public interface HocPhanTheoNienGiamRepository extends JpaRepository<HocPhanTheo
     List<HocPhanTheoNienGiam> findByHocKyNienGiam(HocKyNienGiam hocKyNienGiam);
 
     boolean existsByHocPhan(HocPhan hocPhan);
+
+    boolean existsByHocPhanAndHocKyNienGiam(HocPhan hocPhan, HocKyNienGiam hocKyNienGiam);
+
+    List<HocPhanTheoNienGiam> findByHocKyNienGiamIn(List<HocKyNienGiam> hocKyNienGiamList);
 }

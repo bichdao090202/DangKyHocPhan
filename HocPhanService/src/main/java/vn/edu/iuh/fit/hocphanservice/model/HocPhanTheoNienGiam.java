@@ -40,7 +40,7 @@ public class HocPhanTheoNienGiam {
     public String toString() {
         return "HocPhanTheoNienGiam{" +
                 "id=" + id +
-                ", hocPhan=" + hocPhan +
-                ", hocKyNienGiam=" + hocKyNienGiam;
+                ", hocPhan=" + hocPhan ;
+//                ", hocKyNienGiam=" + hocKyNienGiam;
     }
 }
