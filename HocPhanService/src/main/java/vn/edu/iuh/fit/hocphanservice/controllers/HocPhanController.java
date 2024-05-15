@@ -20,7 +20,7 @@ public class HocPhanController {
     private HocPhanService hocPhanService;
 
     //    {
-//        "ten": "Lập trình thiết bị di động",
+//        "tenHocPhan": "Lập trình thiết bị di động",
 //        "maNganh": 3,
 //        "maKhoa": null,
 //        "soTinChiLyThuyet": 3,
@@ -47,8 +47,8 @@ public class HocPhanController {
     @PostMapping("/deleteHocPhan")
     public String deleteHocPhan(@RequestParam long id) {
         if (!hocPhanService.deleteHocPhan(id))
-            return "false";     // không tìm thấy id hoặc học phần đã được sử dụng
-        return "true";
+            return "false";     // học phần đã được sử dụng hoặc không tìm thấy id
+        return "true";      // xóa thành công
     }
 
     @PostMapping("/createHocPhanTienQuyet")

@@ -11,9 +11,7 @@ import vn.edu.iuh.fit.hocphanservice.model.*;
 import vn.edu.iuh.fit.hocphanservice.repositories.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class HocPhanService {
@@ -37,7 +35,7 @@ public class HocPhanService {
                 || (hocPhanRequest.getMaNganh() != 0 && !nganhRepository.existsById(hocPhanRequest.getMaNganh()))) {
             return null;    // mã ngành hoặc mã khoa không tồn tại
         }
-        HocPhan hocPhan = new HocPhan(hocPhanRequest.getTen(),
+        HocPhan hocPhan = new HocPhan(hocPhanRequest.getTenHocPhan(),
                 hocPhanRequest.getMaNganh() == 0 ? null : new Nganh(hocPhanRequest.getMaNganh()),
                 hocPhanRequest.getMaKhoa() == 0 ? null : new Khoa(hocPhanRequest.getMaKhoa()),
                 hocPhanRequest.getSoTinChiLyThuyet(),

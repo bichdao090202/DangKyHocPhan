@@ -43,7 +43,6 @@ public class HocPhan {
         this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
         this.thucHanh = soTinChiThucHanh > 0;
         this.monDaiCuong = nganh == null && khoa == null;
-
     }
 
     public HocPhan(long id) {

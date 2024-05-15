@@ -24,7 +24,7 @@ public class KetQuaHocPhan {
     private double ketQuaHeSo;
     private String xepLoai;
     private boolean hocLai;
-    @OneToOne @JoinColumn(name = "maHocPhan")
+    @OneToOne @JoinColumn(name = "maLopHocPhan")
     private HocPhan hocPhan;
     private String maSinhVien;
 
