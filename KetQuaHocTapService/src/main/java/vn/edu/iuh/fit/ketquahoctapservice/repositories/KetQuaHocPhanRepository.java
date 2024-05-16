@@ -1,6 +1,5 @@
 package vn.edu.iuh.fit.ketquahoctapservice.repositories;
 
-import jakarta.persistence.NamedNativeQuery;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import vn.edu.iuh.fit.ketquahoctapservice.model.HocPhan;

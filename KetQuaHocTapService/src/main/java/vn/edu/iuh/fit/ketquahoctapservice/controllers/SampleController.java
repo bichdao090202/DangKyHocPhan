@@ -32,19 +32,6 @@ public class SampleController {
         return "Create sample 1 successfully";
     }
 
-    @GetMapping("/createSample2")
-    public String createSample2() {
-        List<Double> listDiem1 = List.of(5.0, 6.0, 7.0, 8.0, 9.0);
-        KetQuaSinhVien ketQuaSinhVien1 = new KetQuaSinhVien(1, listDiem1);
-        List<Double> listDiem2 = List.of(5.0, 5.0, 5.0, 5.0, 9.0, 9.0, 9.0, 7.0);
-        KetQuaSinhVien ketQuaSinhVien2 = new KetQuaSinhVien(2, listDiem2);
-        // 10 10 10 10 5 5 5 10
-        List<Double> listDiem3 = List.of(10.0, 10.0, 10.0, 10.0, 5.0, 5.0, 5.0, 10.0);
-        KetQuaSinhVien ketQuaSinhVien3 = new KetQuaSinhVien(3, listDiem3);
-        ketQuaHocTapService.nhapDiemChoSinhVien(ketQuaSinhVien1, 1, 1);
-        ketQuaHocTapService.nhapDiemChoSinhVien(ketQuaSinhVien2, 2, 1);
-        ketQuaHocTapService.nhapDiemChoSinhVien(ketQuaSinhVien3, 3, 2);
-        return "Create sample 2 successfully";
-    }
+
 
 }

@@ -17,14 +17,6 @@ public class KetQuaHocTapController {
     @Autowired
     private KetQuaHocTapService ketQuaHocTapService;
 
-    @PostMapping("/nhapDiemChoSinhVien")
-    public String nhapDiemChoSinhVien(@RequestBody DiemLopHocPhanRequest diemLopHocPhanRequest) {
-        KetQuaHocPhan ketQuaHocPhan = ketQuaHocTapService.nhapDiemChoSinhVien(diemLopHocPhanRequest.getListKetQuaSinhVien().get(0), diemLopHocPhanRequest.getMaHocPhan(),diemLopHocPhanRequest.getHocKy());
-        return ketQuaHocPhan == null ?
-                "false"     // mã học phần không tồn tại hoặc điểm không hợp lệ
-                : ketQuaHocPhan.toString();
-    }
-
     @PostMapping("/nhapDiemChoLopHocPhan")
     public String nhapDiemChoLopHocPhan(@RequestBody DiemLopHocPhanRequest diemLopHocPhanRequest) {
         List<Long> danhSachMSSVDiemKhongHopLe = ketQuaHocTapService.nhapDiemChoLopHocPhan(diemLopHocPhanRequest);
@@ -43,13 +35,11 @@ public class KetQuaHocTapController {
 //                : ketQuaHocKyList.toString();
 //    }
 
-        @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
+    @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
     public String getKetQuaSinhVien(@PathVariable long maSinhVien) {
         KetQuaHocTapSinhVienDetail ketQuaHocTapSinhVienDetails = ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
         return ketQuaHocTapSinhVienDetails==null?
-                "false"     // sinh viên chưa có kết quả học tập
+                "false"     // mã sinh viên không tồn tại
                 : ketQuaHocTapSinhVienDetails.toString();
     }
-
-
 }

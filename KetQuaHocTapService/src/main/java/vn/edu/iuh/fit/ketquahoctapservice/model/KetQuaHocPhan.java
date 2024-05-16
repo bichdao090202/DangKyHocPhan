@@ -10,7 +10,7 @@ import vn.edu.iuh.fit.ketquahoctapservice.ids.KetQuaHocKyId;
 @Entity
 @Getter
 @Setter
-@ToString
+//@ToString
 public class KetQuaHocPhan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -103,6 +103,25 @@ public class KetQuaHocPhan {
             if (this.thucHanh3 < 1 || this.thucHanh3 > 10.1) return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "KetQuaHocPhan{" +
+                "maKetQuaHocPhan=" + maKetQuaHocPhan +
+                ", thuongKy1=" + thuongKy1 +
+                ", thuongKy2=" + thuongKy2 +
+                ", thuongKy3=" + thuongKy3 +
+                ", giuaKy=" + giuaKy +
+                ", thucHanh1=" + thucHanh1 +
+                ", thucHanh2=" + thucHanh2 +
+                ", thucHanh3=" + thucHanh3 +
+                ", cuoiKy=" + cuoiKy +
+                ", ketQuaHeSo=" + ketQuaHeSo +
+                ", ketQuaChu='" + ketQuaChu + '\'' +
+                ", xepLoai='" + xepLoai + '\'' +
+                ", quaMon=" + quaMon +
+                '}';
     }
 
 
