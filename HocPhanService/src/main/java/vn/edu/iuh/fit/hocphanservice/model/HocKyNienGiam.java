@@ -15,7 +15,7 @@ import java.util.List;
 public class HocKyNienGiam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ma;
+    private long maHocKyNienGiam;
     @ManyToOne @JoinColumn(name = "maNganh")
     private Nganh nganh;
     private int khoa; // Khóa học
@@ -23,26 +23,28 @@ public class HocKyNienGiam {
     private int soTinChi;
     @ManyToOne @JoinColumn(name = "maNhomHocPhanTuChon")
     private NhomHocPhanTuChon nhomHocPhanTuChon;
-    @OneToMany @JoinColumn(name = "maHocKy")
+    @OneToMany @JoinColumn(name = "maHocKyNienGiam")
     private List<HocPhanTheoNienGiam> hocPhanTheoNienGiam;
 
     public HocKyNienGiam(long maNganh, int khoa, int hocKy) {
+        this.nganh = new Nganh(maNganh);
         this.khoa = khoa;
         this.hocKy = hocKy;
     }
 
-    public HocKyNienGiam(long ma) {
+    public HocKyNienGiam(long maHocKyNienGiam) {
+        this.maHocKyNienGiam = maHocKyNienGiam;
     }
 
     @Override
     public String toString() {
         return "HocKyNienGiam{" +
-                "ma=" + ma +
+                "ma=" + maHocKyNienGiam +
                 ", nganh=" + nganh +
                 ", khoa=" + khoa +
                 ", hocKy=" + hocKy +
                 ", soTinChi=" + soTinChi +
-                ", nhomHocPhanTuChon=" + nhomHocPhanTuChon +
+//                ", nhomHocPhanTuChon=" + nhomHocPhanTuChon +
                 ", hocPhanTheoNienGiam=" + hocPhanTheoNienGiam +
                 '}';
     }
