@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.ketquahoctapservice.dtos.request.DiemLopHocPhanRequest;
 import vn.edu.iuh.fit.ketquahoctapservice.dtos.request.KetQuaSinhVien;
+import vn.edu.iuh.fit.ketquahoctapservice.dtos.res.KetQuaHocTapSinhVienDetail;
 import vn.edu.iuh.fit.ketquahoctapservice.model.KetQuaHocKy;
 import vn.edu.iuh.fit.ketquahoctapservice.model.KetQuaHocPhan;
 import vn.edu.iuh.fit.ketquahoctapservice.services.KetQuaHocTapService;
@@ -16,14 +17,6 @@ public class KetQuaHocTapController {
     @Autowired
     private KetQuaHocTapService ketQuaHocTapService;
 
-    @PostMapping("/nhapDiemChoSinhVien")
-    public String nhapDiemChoSinhVien(@RequestBody DiemLopHocPhanRequest diemLopHocPhanRequest) {
-        KetQuaHocPhan ketQuaHocPhan = ketQuaHocTapService.nhapDiemChoSinhVien(diemLopHocPhanRequest.getListKetQuaSinhVien().get(0), diemLopHocPhanRequest.getMaHocPhan(),diemLopHocPhanRequest.getHocKy());
-        return ketQuaHocPhan == null ?
-                "false"     // mã học phần không tồn tại hoặc điểm không hợp lệ
-                : ketQuaHocPhan.toString();
-    }
-
     @PostMapping("/nhapDiemChoLopHocPhan")
     public String nhapDiemChoLopHocPhan(@RequestBody DiemLopHocPhanRequest diemLopHocPhanRequest) {
         List<Long> danhSachMSSVDiemKhongHopLe = ketQuaHocTapService.nhapDiemChoLopHocPhan(diemLopHocPhanRequest);
@@ -34,14 +27,19 @@ public class KetQuaHocTapController {
                 : danhSachMSSVDiemKhongHopLe.toString();
     }
 
+//    @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
+//    public String getKetQuaSinhVien(@PathVariable long maSinhVien) {
+//        List<KetQuaHocKy> ketQuaHocKyList = ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
+//        return ketQuaHocKyList==null?
+//                "false"     // mã sinh viên không tồn tại
+//                : ketQuaHocKyList.toString();
+//    }
+
     @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
     public String getKetQuaSinhVien(@PathVariable long maSinhVien) {
-        List<KetQuaHocKy> ketQuaHocKyList = ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
-        return ketQuaHocKyList==null?
+        KetQuaHocTapSinhVienDetail ketQuaHocTapSinhVienDetails = ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
+        return ketQuaHocTapSinhVienDetails==null?
                 "false"     // mã sinh viên không tồn tại
-                : ketQuaHocKyList.toString();
+                : ketQuaHocTapSinhVienDetails.toString();
     }
-
-
-
 }

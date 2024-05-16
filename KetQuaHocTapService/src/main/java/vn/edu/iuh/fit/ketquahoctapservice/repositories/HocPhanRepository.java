@@ -7,7 +7,6 @@ import vn.edu.iuh.fit.ketquahoctapservice.model.HocPhan;
 import java.util.List;
 
 public interface HocPhanRepository extends JpaRepository<HocPhan, Long> {
-//    SELECT * FROM hoc_phan WHERE hoc_phan.ma_hoc_phan IN (SELECT ket_qua_hoc_phan.ma_hoc_phan FROM ket_qua_hoc_phan WHERE ma_sinh_vien=1 AND hoc_ky=1)
-    @Query("SELECT hp FROM HocPhan hp WHERE hp.maHocPhan IN (SELECT kqhp.hocPhan.maHocPhan FROM KetQuaHocPhan kqhp WHERE kqhp.maSinhVien=?1 AND kqhp.hocKy=?2)")
+    @Query("SELECT h FROM HocPhan h WHERE h.maHocPhan IN (SELECT k.hocPhan.maHocPhan FROM KetQuaHocPhan k WHERE k.ketQuaHocKy.id.maSinhVien = ?1 AND k.ketQuaHocKy.id.hocKy = ?2)")
     List<HocPhan> findByMaSinhVienAndHocKy(long maSinhVien, int hocKy);
 }
