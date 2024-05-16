@@ -2,6 +2,7 @@ package vn.edu.iuh.fit.ketquahoctapservice.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import vn.edu.iuh.fit.ketquahoctapservice.dtos.request.HocPhanRequest;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,8 +13,7 @@ import lombok.*;
 public class HocPhan {
     @Id
     private long maHocPhan;
-    private long maLopHocPhan;
-    private String ten;
+    private String tenHocPhan;
     private int soTinChi;
     private int soTinChiLyThuyet;
     private int soTinChiThucHanh;
@@ -24,17 +24,19 @@ public class HocPhan {
         Học phần có Khoa khác null là môn chỉ học trong khoa đó
         Học phần có Nganh và Khoa null là môn đại cương của trường
      */
-    public HocPhan(String ten, int soTinChiLyThuyet, int soTinChiThucHanh, long maLopHocPhan) {
-        this.ten = ten;
-        this.soTinChiLyThuyet = soTinChiLyThuyet;
-        this.soTinChiThucHanh = soTinChiThucHanh;
-        this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
-        this.thucHanh = soTinChiThucHanh > 0;
-        this.maLopHocPhan = maLopHocPhan;
-    }
 
+    public HocPhan(HocPhanRequest hocPhanRequest){
+        this.maHocPhan = hocPhanRequest.getMaHocPhan();
+        this.tenHocPhan = hocPhanRequest.getTenHocPhan();
+        this.soTinChiLyThuyet = hocPhanRequest.getSoTinChiLyThuyet();
+        this.soTinChiThucHanh = hocPhanRequest.getSoTinChiThucHanh();
+        this.soTinChi = hocPhanRequest.getSoTinChiLyThuyet() + hocPhanRequest.getSoTinChiThucHanh();
+        this.thucHanh = hocPhanRequest.getSoTinChiThucHanh() > 0;
+    }
 
     public HocPhan(long maHocPhan) {
         this.maHocPhan = maHocPhan;
     }
+
+
 }
