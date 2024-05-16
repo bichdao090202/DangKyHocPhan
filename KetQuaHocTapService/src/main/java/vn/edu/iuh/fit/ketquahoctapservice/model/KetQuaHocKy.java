@@ -2,6 +2,7 @@ package vn.edu.iuh.fit.ketquahoctapservice.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import vn.edu.iuh.fit.ketquahoctapservice.ids.KetQuaHocKyId;
 
 import java.util.List;
 
@@ -12,25 +13,29 @@ import java.util.List;
 @Setter
 @ToString
 public class KetQuaHocKy {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long maKetQuaHocKy;
-    private long maSinhVien;
+    @EmbeddedId
+    private KetQuaHocKyId id;
     private double diemTichLuy;
     private double diemTrungBinh;
     private int soTinChiTichLuy;
     private String xepLoai;
-    private int hocKy;
-    @OneToMany(mappedBy = "maSinhVien")
+    @OneToMany(mappedBy = "ketQuaHocKy")
     List<KetQuaHocPhan> ketQuaHocPhans;
 
     public KetQuaHocKy(long maSinhVien, KetQuaHocPhan ketQuaHocPhan, int hocKy) {
-        this.maSinhVien = maSinhVien;
-        this.hocKy = hocKy;
+        this.id = new KetQuaHocKyId(maSinhVien, hocKy);
         this.soTinChiTichLuy = ketQuaHocPhan.getHocPhan().getSoTinChi();
         this.diemTrungBinh = ketQuaHocPhan.getKetQuaHeSo();
         this.diemTichLuy = ketQuaHocPhan.getKetQuaHeSo() * ketQuaHocPhan.getHocPhan().getSoTinChi();
         tinhXepLoai();
+    }
+
+    public KetQuaHocKy(KetQuaHocKyId ketQuaHocKyId) {
+        this.id = ketQuaHocKyId;
+    }
+
+    public KetQuaHocKy(long maSinhVien, int hocKy) {
+        this.id = new KetQuaHocKyId(maSinhVien, hocKy);
     }
 
     public void updateKeQuaHocKy(List<KetQuaHocPhan> ketQuaHocPhanList) {

@@ -38,5 +38,14 @@ public class HocPhan {
         this.maHocPhan = maHocPhan;
     }
 
+    public HocPhan(long maHocPhan, String tenHocPhan, int soTinChiLyThuyet, int soTinChiThucHanh) {
+        this.maHocPhan = maHocPhan;
+        this.tenHocPhan = tenHocPhan;
+        this.soTinChiLyThuyet = soTinChiLyThuyet;
+        this.soTinChiThucHanh = soTinChiThucHanh;
+        this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
+        this.thucHanh = soTinChiThucHanh > 0;
+    }
+
 
 }

@@ -3,6 +3,7 @@ package vn.edu.iuh.fit.ketquahoctapservice.model;
 import jakarta.persistence.*;
 import lombok.*;
 import vn.edu.iuh.fit.ketquahoctapservice.dtos.request.KetQuaSinhVien;
+import vn.edu.iuh.fit.ketquahoctapservice.ids.KetQuaHocKyId;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,12 +29,16 @@ public class KetQuaHocPhan {
     private boolean quaMon;
     @ManyToOne @JoinColumn(name = "maHocPhan")
     private HocPhan hocPhan;
-    private long maSinhVien;
-    private int hocKy;
+    @ManyToOne
+    @JoinColumns({
+            @JoinColumn(name = "maSinhVien", referencedColumnName = "maSinhVien"),
+            @JoinColumn(name = "hocKy", referencedColumnName = "hocKy")
+    })
+    private KetQuaHocKy ketQuaHocKy;
 
-    public KetQuaHocPhan(KetQuaSinhVien ketQuaSinhVien, HocPhan hocPhan) {
+    public KetQuaHocPhan(KetQuaSinhVien ketQuaSinhVien, HocPhan hocPhan,int hocKy) {
         this.hocPhan = hocPhan;
-        this.maSinhVien = ketQuaSinhVien.getMaSinhVien();
+        this.ketQuaHocKy = new KetQuaHocKy(new KetQuaHocKyId(ketQuaSinhVien.getMaSinhVien(), hocKy));
         this.thuongKy1 = ketQuaSinhVien.getListDiem().get(0);
         this.thuongKy2 = ketQuaSinhVien.getListDiem().get(1);
         this.thuongKy3 = ketQuaSinhVien.getListDiem().get(2);
