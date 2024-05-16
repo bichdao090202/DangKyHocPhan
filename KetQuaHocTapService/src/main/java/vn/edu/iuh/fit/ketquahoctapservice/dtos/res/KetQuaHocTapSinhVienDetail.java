@@ -1,5 +1,7 @@
 package vn.edu.iuh.fit.ketquahoctapservice.dtos.res;
 
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Getter
 @Setter
-@ToString
+//@ToString
 public class KetQuaHocTapSinhVienDetail {
     private double diemTrungBinh;
     private int soTinChiTichLuy;
@@ -38,6 +40,17 @@ public class KetQuaHocTapSinhVienDetail {
         if (diemTrungBinh >= 5)
             return "Trung bình";
         return "Yếu";
+    }
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @Override
+    public String toString() {
+        return "{" +
+                "diemTrungBinh=" + diemTrungBinh +
+                ", soTinChiTichLuy=" + soTinChiTichLuy +
+                ", xepLoai='" + xepLoai + '\'' +
+                ", ketQuaHocKySinhViens=" + ketQuaHocKySinhViens +
+                '}';
     }
 
 }

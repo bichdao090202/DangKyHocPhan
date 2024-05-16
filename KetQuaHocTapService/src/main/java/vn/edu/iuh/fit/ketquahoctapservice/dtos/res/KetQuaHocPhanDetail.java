@@ -10,7 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class KetQuaHocPhanDetail {
     private List<Double> listDiem;
     private double ketQuaHeSo;
@@ -39,5 +38,16 @@ public class KetQuaHocPhanDetail {
         this.tenHocPhan = ketQuaHocPhan.getHocPhan().getTenHocPhan();
     }
 
-
+    @Override
+    public String toString() {
+        return "{" +
+                "listDiem=" + listDiem +
+                ", ketQuaHeSo=" + ketQuaHeSo +
+                ", ketQuaChu='" + ketQuaChu + '\'' +
+                ", xepLoai='" + xepLoai + '\'' +
+                ", quaMon=" + quaMon +
+                ", maHocPhan=" + maHocPhan +
+                ", tenHocPhan='" + tenHocPhan + '\'' +
+                '}';
+    }
 }
