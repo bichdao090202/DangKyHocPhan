@@ -12,6 +12,7 @@ import java.util.List;
 @ToString
 public class DiemLopHocPhanRequest {
     private long maHocPhan;
+    private int hocKy;
     private List<KetQuaSinhVien> listKetQuaSinhVien;
 
 }
