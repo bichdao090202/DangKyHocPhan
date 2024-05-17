@@ -12,7 +12,7 @@ public class HocPhanController {
     @Autowired
     private HocPhanService hocPhanService;
 
-//    {
+    //    {
 //        "maHocPhan": 1,
 //        "tenHocPhan": "Lập trình thiết bị di động",
 //        "soTinChiLyThuyet": 3,
@@ -20,8 +20,7 @@ public class HocPhanController {
 //    }
     @PostMapping("/createHocPhan")
     public HocPhan createHocPhan(@RequestBody HocPhanRequest hocPhanRequest) {
-        HocPhan hocPhan = hocPhanService.createHocPhan(new HocPhan(hocPhanRequest));
-        return hocPhan;
+        return hocPhanService.createHocPhan(new HocPhan(hocPhanRequest));
     }
 
     @PostMapping("/deleteHocPhan/{id}")
@@ -31,9 +30,7 @@ public class HocPhanController {
 
     @GetMapping("/getHocPhanById/{id}")
     public HocPhan getHocPhanById(@PathVariable long id) {
-        HocPhan hocPhan = hocPhanService.getHocPhanById(id);
-        return hocPhan;
+        return hocPhanService.getHocPhanById(id);
     }
-
 
 }
