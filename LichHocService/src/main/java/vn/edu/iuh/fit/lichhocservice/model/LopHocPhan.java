@@ -1,5 +1,6 @@
 package vn.edu.iuh.fit.lichhocservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,6 +9,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "lop_hoc_phan")
 @Getter
 @Setter
 @ToString
@@ -20,39 +22,9 @@ public class LopHocPhan {
     @ManyToOne @JoinColumn(name = "maHocPhan")
     private HocPhan hocPhan;
     @ManyToOne @JoinColumn(name = "maGiangVien")
+    @JsonIgnore
     private GiangVien giangVien;
-    @OneToMany @JoinColumn(name = "maLichHoc")
-    private List<LichHoc> lichHoc;
-
-    public LopHocPhan(long maLopHocPhan) {
-        this.maLopHocPhan = maLopHocPhan;
-    }
-
-    public LopHocPhan(long maHocPhan, int soLuongToiDa) {
-        this.hocPhan = new HocPhan(maHocPhan);
-        this.soLuongHienTai = 0;
-        this.soLuongToiDa = soLuongToiDa;
-    }
-
-    public LopHocPhan(long maHocPhan, long maGiangVien, int soLuongToiDa) {
-        this.hocPhan = new HocPhan(maHocPhan);
-        this.giangVien = new GiangVien(maGiangVien);
-        this.soLuongHienTai = 0;
-        this.soLuongToiDa = soLuongToiDa;
-    }
-
-    public LopHocPhan(long maHocPhan, long maGiangVien,long maLopHocPhan, int soLuongToiDa) {
-        this.hocPhan = new HocPhan(maHocPhan);
-        this.giangVien = new GiangVien(maGiangVien);
-        this.soLuongHienTai = 0;
-        this.soLuongToiDa = soLuongToiDa;
-    }
-
-
-
-
-
-
-
-
+    @OneToMany(mappedBy = "lopHocPhan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<LichHoc> lichHocList;
 }

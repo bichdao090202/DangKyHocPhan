@@ -1,13 +1,16 @@
 package vn.edu.iuh.fit.lichhocservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "lich_hoc")
 @Getter
 @Setter
 @ToString
@@ -25,6 +28,9 @@ public class LichHoc {
     private LopHocPhan lopHocPhan;
     @ManyToOne @JoinColumn(name = "maGiangVien")
     private GiangVien giangVien;
+    @OneToMany(mappedBy = "maLichHoc")
+    @JsonIgnore
+    private List<SinhVien_LichHoc> sinhVienLichHocList;
 
 public LichHoc(LocalDate ngayHoc, int tietBatDau, int nhomThucHanh) {
         this.ngayHoc = ngayHoc;
