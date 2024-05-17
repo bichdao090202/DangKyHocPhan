@@ -19,21 +19,18 @@ public class HocPhanController {
 //        "soTinChiThucHanh": 1
 //    }
     @PostMapping("/createHocPhan")
-    public String createHocPhan(@RequestBody HocPhanRequest hocPhanRequest) {
-        HocPhan hocPhan = hocPhanService.createHocPhan(new HocPhan(hocPhanRequest));
-        return hocPhan.toString();
+    public HocPhan createHocPhan(@RequestBody HocPhanRequest hocPhanRequest) {
+        return hocPhanService.createHocPhan(new HocPhan(hocPhanRequest));
     }
 
     @PostMapping("/deleteHocPhan/{id}")
-    public String deleteHocPhan(@PathVariable long id) {
-        return hocPhanService.deleteHocPhan(id)? "true" : "false";
+    public boolean deleteHocPhan(@PathVariable long id) {
+        return hocPhanService.deleteHocPhan(id);
     }
 
     @GetMapping("/getHocPhanById/{id}")
-    public String getHocPhanById(@PathVariable long id) {
-        HocPhan hocPhan = hocPhanService.getHocPhanById(id);
-        return hocPhan==null? "false" : hocPhan.toString();
+    public HocPhan getHocPhanById(@PathVariable long id) {
+        return hocPhanService.getHocPhanById(id);
     }
-
 
 }

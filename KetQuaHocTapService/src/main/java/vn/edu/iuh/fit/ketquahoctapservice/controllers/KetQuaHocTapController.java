@@ -18,28 +18,13 @@ public class KetQuaHocTapController {
     private KetQuaHocTapService ketQuaHocTapService;
 
     @PostMapping("/nhapDiemChoLopHocPhan")
-    public String nhapDiemChoLopHocPhan(@RequestBody DiemLopHocPhanRequest diemLopHocPhanRequest) {
+    public List<Long> nhapDiemChoLopHocPhan(@RequestBody DiemLopHocPhanRequest diemLopHocPhanRequest) {
         List<Long> danhSachMSSVDiemKhongHopLe = ketQuaHocTapService.nhapDiemChoLopHocPhan(diemLopHocPhanRequest);
-        if (danhSachMSSVDiemKhongHopLe == null)
-            return "false";     // mã học phần không tồn tại
-        return danhSachMSSVDiemKhongHopLe.isEmpty() ?
-                "true"     // nhập điểm thành công
-                : danhSachMSSVDiemKhongHopLe.toString();
+        return danhSachMSSVDiemKhongHopLe;
     }
 
-//    @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
-//    public String getKetQuaSinhVien(@PathVariable long maSinhVien) {
-//        List<KetQuaHocKy> ketQuaHocKyList = ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
-//        return ketQuaHocKyList==null?
-//                "false"     // mã sinh viên không tồn tại
-//                : ketQuaHocKyList.toString();
-//    }
-
     @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
-    public String getKetQuaSinhVien(@PathVariable long maSinhVien) {
-        KetQuaHocTapSinhVienDetail ketQuaHocTapSinhVienDetails = ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
-        return ketQuaHocTapSinhVienDetails==null?
-                "false"     // mã sinh viên không tồn tại
-                : ketQuaHocTapSinhVienDetails.toString();
+    public KetQuaHocTapSinhVienDetail getKetQuaSinhVien(@PathVariable long maSinhVien) {
+        return ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
     }
 }
