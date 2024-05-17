@@ -2,6 +2,7 @@ package com.example.userauthenticationservice.service;
 
 import com.example.userauthenticationservice.model.Nganh;
 import com.example.userauthenticationservice.model.SinhVien;
+import com.example.userauthenticationservice.model.TaiKhoan;
 import com.example.userauthenticationservice.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +25,17 @@ public class UserService {
     }
 
     public SinhVien createSinhVien(SinhVien sinhVien) {
-        return sinhVienRepository.save(sinhVien);
+        SinhVien sv = sinhVienRepository.save(sinhVien);
+        TaiKhoan tk = new TaiKhoan(sv.getMaSinhVien());
+        taiKhoanRepository.save(tk);
+        return sv;
     }
 
-
+    public SinhVien dangNhap(long tenDangNhap, String matKhau) {
+        TaiKhoan tk = taiKhoanRepository.findById(tenDangNhap).orElse(null);
+        if (tk.getMatKhau().equals(matKhau)) {
+            return sinhVienRepository.findById(tenDangNhap).orElse(null);
+        }
+        return null;
+    }
 }

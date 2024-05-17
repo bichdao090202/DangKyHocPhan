@@ -20,6 +20,8 @@ public class SinhVien {
     private boolean totNghiep;
     @ManyToOne @JoinColumn(name = "maNganh")
     private Nganh nganh;
+    @ManyToOne @JoinColumn(name = "tenDangNhap")
+    private TaiKhoan taiKhoan;
 
     public SinhVien(String ten, int khoa, long maNganh) {
         this.ten = ten;
