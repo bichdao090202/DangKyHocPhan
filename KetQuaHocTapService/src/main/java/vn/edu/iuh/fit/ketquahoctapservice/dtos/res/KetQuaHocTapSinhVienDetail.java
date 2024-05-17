@@ -42,15 +42,4 @@ public class KetQuaHocTapSinhVienDetail {
         return "Yếu";
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
-    @Override
-    public String toString() {
-        return "{" +
-                "diemTrungBinh=" + diemTrungBinh +
-                ", soTinChiTichLuy=" + soTinChiTichLuy +
-                ", xepLoai='" + xepLoai + '\'' +
-                ", ketQuaHocKySinhViens=" + ketQuaHocKySinhViens +
-                '}';
-    }
-
 }
