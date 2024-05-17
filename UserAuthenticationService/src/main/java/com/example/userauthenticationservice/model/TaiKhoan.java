@@ -26,4 +26,6 @@ public class TaiKhoan {
         this.tenDangNhap = sinhVien.getMaSinhVien();
         this.matKhau = "1111";
     }
+
+
 }

@@ -1,8 +1,6 @@
 package com.example.userauthenticationservice.service;
 
-import com.example.userauthenticationservice.model.Nganh;
-import com.example.userauthenticationservice.model.SinhVien;
-import com.example.userauthenticationservice.model.TaiKhoan;
+import com.example.userauthenticationservice.model.*;
 import com.example.userauthenticationservice.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,11 +29,32 @@ public class UserService {
         return sv;
     }
 
-    public SinhVien dangNhap(long tenDangNhap, String matKhau) {
+    public GiangVien createGiangVien(GiangVien giangVien) {
+        GiangVien gv = giangVienRepository.save(giangVien);
+        TaiKhoan tk = new TaiKhoan(giangVien.getMaGiangVien());
+        taiKhoanRepository.save(tk);
+        return gv;
+    }
+
+    public GiaoVu createGiaoVu(GiaoVu giaoVu) {
+        GiaoVu gv = giaoVuRepository.save(giaoVu);
+        TaiKhoan tk = new TaiKhoan(giaoVu.getMaGiaoVu());
+        taiKhoanRepository.save(tk);
+        return gv;
+    }
+
+    public Object dangNhap(long tenDangNhap, String matKhau) {
         TaiKhoan tk = taiKhoanRepository.findById(tenDangNhap).orElse(null);
+        assert tk != null;
         if (tk.getMatKhau().equals(matKhau)) {
-            return sinhVienRepository.findById(tenDangNhap).orElse(null);
+            if (tenDangNhap>=10000)
+                return sinhVienRepository.findById(tenDangNhap).orElse(null);
+            if (tenDangNhap>=5000)
+                return giangVienRepository.findById(tenDangNhap).orElse(null);
+            return giaoVuRepository.findById(tenDangNhap).orElse(null);
         }
         return null;
     }
+
+
 }
