@@ -23,7 +23,8 @@ public class HocPhan {
     private int soTinChi;
     private int soTinChiLyThuyet;
     private int soTinChiThucHanh;
-    @OneToMany @JoinColumn(name = "maHocPhan")
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "maHocPhan")
     private List<HocPhanTienQuyet> hocPhanTienQuyet;
     private boolean thucHanh;
     private boolean monDaiCuong;
@@ -42,7 +43,6 @@ public class HocPhan {
         this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
         this.thucHanh = soTinChiThucHanh > 0;
         this.monDaiCuong = nganh == null && khoa == null;
-
     }
 
     public HocPhan(long id) {
@@ -63,4 +63,5 @@ public class HocPhan {
                 ", monDaiCuong=" + monDaiCuong +
                 '}';
     }
+
 }
