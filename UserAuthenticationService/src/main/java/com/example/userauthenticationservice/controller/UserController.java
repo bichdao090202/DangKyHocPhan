@@ -51,6 +51,4 @@ public class UserController {
     public Object dangNhap(@PathVariable Long tenDangNhap,@PathVariable String matKhau) {
         return userService.dangNhap(tenDangNhap, matKhau);
     }
-
-
 }
