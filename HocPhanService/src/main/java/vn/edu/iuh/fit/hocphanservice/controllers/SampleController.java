@@ -60,6 +60,4 @@ public class SampleController {
         hocKyNienGiamRepository.save(new HocKyNienGiam(3,16,2));
         return hocPhanService.getHocKyNienGiamByNganhAndKhoa(3,16).toString();
     }
-
-
 }

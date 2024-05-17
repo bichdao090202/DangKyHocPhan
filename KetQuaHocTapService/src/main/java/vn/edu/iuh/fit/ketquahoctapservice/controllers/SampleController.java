@@ -32,6 +32,4 @@ public class SampleController {
         return "Create sample 1 successfully";
     }
 
-
-
 }

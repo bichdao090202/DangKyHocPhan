@@ -11,7 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString
 public class KetQuaHocKySinhVien {
     private int hocKy;
     private List<KetQuaHocPhanDetail> ketQuaHocPhanDetailRespons = new ArrayList<>();
@@ -20,7 +19,6 @@ public class KetQuaHocKySinhVien {
     private String xepLoai;
 
     public KetQuaHocKySinhVien(KetQuaHocKy ketQuaHocKy) {
-//        this.hocKy = ketQuaHocKy.getHocKy();
         this.hocKy = ketQuaHocKy.getId().getHocKy();
         for (KetQuaHocPhan ketQuaHocPhan : ketQuaHocKy.getKetQuaHocPhans()) {
             ketQuaHocPhanDetailRespons.add(new KetQuaHocPhanDetail(ketQuaHocPhan));
@@ -28,5 +26,16 @@ public class KetQuaHocKySinhVien {
         this.diemTrungBinh = Math.round(ketQuaHocKy.getDiemTrungBinh() * 100.0) / 100.0;
         this.soTinChiTichLuy = ketQuaHocKy.getSoTinChiTichLuy();
         this.xepLoai = ketQuaHocKy.getXepLoai();
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "hocKy=" + hocKy +
+                ", ketQuaHocPhanDetailRespons=" + ketQuaHocPhanDetailRespons +
+                ", diemTrungBinh=" + diemTrungBinh +
+                ", soTinChiTichLuy=" + soTinChiTichLuy +
+                ", xepLoai='" + xepLoai + '\'' +
+                '}';
     }
 }
