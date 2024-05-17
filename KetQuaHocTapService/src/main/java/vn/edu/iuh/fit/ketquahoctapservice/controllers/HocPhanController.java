@@ -31,6 +31,7 @@ public class HocPhanController {
     @GetMapping("/getHocPhanById/{id}")
     public HocPhan getHocPhanById(@PathVariable long id) {
         return hocPhanService.getHocPhanById(id);
+        HocPhan hocPhan = hocPhanService.getHocPhanById(id);
     }
 
 }

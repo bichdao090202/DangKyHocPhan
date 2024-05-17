@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/KetQuaHocTap")
+@CrossOrigin("*")
 public class KetQuaHocTapController {
     @Autowired
     private KetQuaHocTapService ketQuaHocTapService;
