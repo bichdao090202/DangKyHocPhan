@@ -3,7 +3,9 @@ package vn.edu.iuh.fit.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import vn.edu.iuh.fit.dtos.request.LopHocPhanRequest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -27,4 +29,15 @@ public class LopHocPhan {
     @OneToMany(mappedBy = "lopHocPhan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<LichHoc> lichHocList;
+    private LocalDate ngayMoDangKy;
+    private LocalDate ngayBatDau;
+    private LocalDate ngayKetThuc;
+    private String tenLopHocPhan;
+
+    public LopHocPhan(LopHocPhanRequest lopHocPhanRequest){
+        this.hocPhan = new HocPhan(lopHocPhanRequest.getMaHocPhan());
+        this.ngayMoDangKy = lopHocPhanRequest.getNgayMoDangKy();
+        this.giangVien = new GiangVien(lopHocPhanRequest.getMaGiangVien());
+    }
+
 }

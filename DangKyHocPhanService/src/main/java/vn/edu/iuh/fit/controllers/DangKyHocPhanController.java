@@ -15,6 +15,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/DangKyHocPhanService")
+@CrossOrigin("*")
+
 public class DangKyHocPhanController {
     @Autowired
     private SinhVienRepository sinhVienRepository;

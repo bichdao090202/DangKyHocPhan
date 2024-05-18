@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BTL.iml" filepath="$PROJECT_DIR$/.idea/BTL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/HocPhanService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/HocPhanService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/KetQuaHocTapService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/KetQuaHocTapService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/LichHocService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/LichHocService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UserAuthenticationService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/UserAuthenticationService.main.iml" />
     </modules>
   </component>
 </project>

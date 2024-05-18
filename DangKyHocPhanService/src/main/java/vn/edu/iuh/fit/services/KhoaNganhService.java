@@ -30,15 +30,15 @@ public class KhoaNganhService {
 
     public Khoa createKhoa(String tenKhoa) {
         Khoa khoa = khoaRepository.findByTenKhoa(tenKhoa);
-        if (khoa==null)
-            return null;
+        if (khoa!=null)
+            return khoa;
         return khoaRepository.save(new Khoa(tenKhoa));
     }
 
     public Nganh createNganh(String tenNganh, long maKhoa) {
         Nganh nganh = nganhRepository.findByTenNganh(tenNganh);
-        if (nganh==null)
-            return null;
+        if (nganh!=null)
+            return nganh;
         Khoa khoa = khoaRepository.findById(maKhoa).orElse(null);
         if (khoa == null)
             return null;
