@@ -125,4 +125,49 @@ public class DangKyHocPhanController {
         }
         return "Đã xảy ra lỗi trong quá trình đăng ký!";
     }
+
+    @DeleteMapping("/huyDKHP")
+    @Transactional
+    public boolean huyDangKyHocPhan(@RequestParam("maSV")String maSV, @RequestParam("maHocPhan")String maHocPhan) throws RuntimeException{
+        try{
+            Optional<SinhVien> sv = sinhVienRepository.findById(Long.parseLong(maSV));
+            Optional<HocPhan> hp = hocPhanRepository.findById(Long.parseLong(maHocPhan));
+            if(sv.isPresent() && hp.isPresent()){
+                Optional<HocPhanDaDangKy> hocPhanDaDangKy = hocPhanDaDangKyRepository.findById(new SinhVien_HocPhanPK(sv.get().getMaSV(), hp.get().getMaHocPhan()));
+                if(hocPhanDaDangKy.isEmpty()) return false;
+                SinhVien sinhVien = sv.get();
+                HocPhan hocPhan = hp.get();
+                List<HocPhanDaDangKy> listHPSV = sinhVien.getHocPhanDaDangKyList();
+                listHPSV.remove(hocPhanDaDangKy.get());
+                sinhVien.setHocPhanDaDangKyList(listHPSV);
+
+                List<HocPhanDaDangKy> listHPHP = hocPhan.getHocPhanDaDangKyList();
+                listHPHP.remove(hocPhanDaDangKy.get());
+                hocPhan.setHocPhanDaDangKyList(listHPHP);
+                hocPhanDaDangKyRepository.delete(hocPhanDaDangKy.get());
+                hocPhanRepository.save(hocPhan);
+
+                SinhVien_LichHoc lh = sinhVienLichHocRepository.getLichHocByMaHP(hocPhan.getMaHocPhan(), sinhVien.getMaSV()).get(0);
+                List<SinhVien_LichHoc> svlhSV = sinhVien.getSinhVienLichHocList();
+                svlhSV.remove(lh);
+                sinhVien.setSinhVienLichHocList(svlhSV);
+
+                LichHoc lichHoc = lichHocRepository.findById(lh.getMaLichHoc().getMaLichHoc()).get();
+
+                List<SinhVien_LichHoc> svlhLH = lichHoc.getSinhVienLichHocList();
+                svlhLH.remove(lh);
+                lichHoc.setSinhVienLichHocList(svlhLH);
+
+                sinhVienLichHocRepository.delete(lh);
+                sinhVienRepository.save(sinhVien);
+                lichHocRepository.save(lichHoc);
+
+                return true;
+            }
+        }catch (Exception e){
+            System.out.println(e);
+            throw new RuntimeException();
+        }
+        return false;
+    }
 }
