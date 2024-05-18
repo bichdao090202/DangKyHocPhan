@@ -50,4 +50,8 @@ public class HocPhan {
     public HocPhan(long maHocPhan) {
         this.maHocPhan = maHocPhan;
     }
+
+    public HocPhan(HocPhan maHocPhan) {
+
+    }
 }

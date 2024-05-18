@@ -152,6 +152,8 @@ public class HocPhanService {
     public List<HocPhanResponse> findDanhSachHocPhanSinhVienCoTheDangKy( long maNganh, int khoa) {
         List<HocPhanResponse> hocPhanResponses = new ArrayList<>();
         List<HocPhan> hocPhans = hocPhanRepository.findHocPhanSinhVienDangKy(maNganh, khoa);
+        if (hocPhans == null)
+            return null;    // không tìm thấy học phần
         for (HocPhan hocPhan : hocPhans) {
             HocPhanResponse hocPhanResponse = new HocPhanResponse(hocPhan);
             hocPhanResponses.add(hocPhanResponse);
