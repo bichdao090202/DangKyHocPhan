@@ -15,6 +15,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/HocPhanService")
+@CrossOrigin("*")
+
 public class HocPhanController {
     @Autowired
     private HocPhanService hocPhanService;

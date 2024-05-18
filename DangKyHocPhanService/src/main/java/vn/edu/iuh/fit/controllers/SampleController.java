@@ -1,10 +1,7 @@
 package vn.edu.iuh.fit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.dtos.request.HocKyNienGiamRequest;
 import vn.edu.iuh.fit.dtos.request.HocPhanRequest;
 import vn.edu.iuh.fit.dtos.res.HocPhanResponse;
@@ -22,6 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("SampleController")
+@CrossOrigin("*")
 public class SampleController {
     @Autowired
     private HocPhanService hocPhanService;
