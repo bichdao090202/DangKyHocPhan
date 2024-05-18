@@ -1,4 +1,4 @@
-package vn.edu.iuh.fit.hocphanservice.model;
+package vn.edu.iuh.fit.models;
 
 import jakarta.persistence.*;
 import lombok.*;

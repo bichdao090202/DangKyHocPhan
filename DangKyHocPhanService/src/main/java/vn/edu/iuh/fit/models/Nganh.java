@@ -29,4 +29,13 @@ public class Nganh {
     @OneToMany(mappedBy = "nganh", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<SinhVien> sinhVienList;
+
+    public Nganh(long maNganh) {
+        this.maNganh = maNganh;
+    }
+
+    public Nganh(String tenNganh, Khoa khoa) {
+        this.tenNganh = tenNganh;
+        this.khoa = khoa;
+    }
 }

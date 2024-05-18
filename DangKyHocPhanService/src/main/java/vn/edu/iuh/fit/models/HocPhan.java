@@ -12,21 +12,41 @@ import java.util.List;
 @Table(name = "hoc_phan")
 @Getter
 @Setter
-@ToString
 public class HocPhan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long maHocPhan;
     private String ten;
+    private int soTinChi;
     private int soTinChiLyThuyet;
     private int soTinChiThucHanh;
     private int hocKy;
-    private boolean batBuoc;
+    @ManyToOne @JoinColumn(name = "maKhoa")
+    private Khoa khoa;
     @ManyToOne
     @JoinColumn(name = "maNganh")
     private Nganh nganh;
     @OneToMany(mappedBy = "hocPhan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<LopHocPhan> lopHocPhanList;
+    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "maHocPhan")
+    private List<HocPhanTienQuyet> hocPhanTienQuyet;
+    private boolean thucHanh;
+    private boolean monDaiCuong;
 
+    public HocPhan(String ten, Nganh nganh, Khoa khoa, int soTinChiLyThuyet, int soTinChiThucHanh) {
+        this.ten = ten;
+        this.nganh = nganh;
+        this.khoa = khoa;
+        this.soTinChiLyThuyet = soTinChiLyThuyet;
+        this.soTinChiThucHanh = soTinChiThucHanh;
+        this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
+        this.thucHanh = soTinChiThucHanh > 0;
+        this.monDaiCuong = nganh == null && khoa == null;
+    }
+
+    public HocPhan(long maHocPhan) {
+        this.maHocPhan = maHocPhan;
+    }
 }
