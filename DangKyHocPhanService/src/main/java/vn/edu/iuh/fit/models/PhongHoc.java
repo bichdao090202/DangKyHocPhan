@@ -26,4 +26,9 @@ public class PhongHoc {
     public PhongHoc(long maPhong) {
         this.maPhong = maPhong;
     }
+
+    public PhongHoc(String tenPhong, boolean phongLyThuyet) {
+        this.tenPhong = tenPhong;
+        this.phongLyThuyet = phongLyThuyet;
+    }
 }

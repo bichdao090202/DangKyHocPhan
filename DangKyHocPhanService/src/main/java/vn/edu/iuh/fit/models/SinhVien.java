@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import vn.edu.iuh.fit.dtos.request.SinhVienRequest;
 
 import java.util.List;
 
@@ -18,9 +19,6 @@ import java.util.List;
 public class SinhVien {
     @Id
     private long maSV;
-    private String tenSV;
-    private String email;
-    private String diaChi;
     @ManyToOne
     @JoinColumn(name = "maNganh")
     private Nganh nganh;
@@ -30,4 +28,9 @@ public class SinhVien {
     @OneToMany(mappedBy = "maSV")
     @JsonIgnore
     private List<HocPhanDaDangKy> hocPhanDaDangKyList;
+
+    public SinhVien(SinhVienRequest sinhVienRequest){
+        this.maSV = sinhVienRequest.getMaSinhVien();
+        this.nganh = new Nganh(sinhVienRequest.getMaNganh());
+    }
 }

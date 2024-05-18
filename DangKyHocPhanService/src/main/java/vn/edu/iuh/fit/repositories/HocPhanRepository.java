@@ -1,6 +1,5 @@
 package vn.edu.iuh.fit.repositories;
 
-import jakarta.websocket.server.PathParam;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,16 +19,27 @@ public interface HocPhanRepository extends JpaRepository<HocPhan, Long> {
             ")")
     HocPhan getHocPhanByLichHoc(@Param("maLichHoc") long maLichHoc);
 
-//    @Query(value = "SELECT * FROM hoc_phan WHERE ma_hoc_phan IN " +
+    //    @Query(value = "SELECT * FROM hoc_phan WHERE ma_hoc_phan IN " +
 //            "(SELECT ma_hoc_phan FROM hoc_phan_theo_nien_giam WHERE ma_hoc_ky_nien_giam IN " +
 //            "(SELECT ma_hoc_ky_nien_giam FROM hoc_ky_nien_giam " +
 //            "WHERE ma_nganh = :maNganh AND khoa = :khoa))",
 //            nativeQuery = true)
 //    List<HocPhan> findHocPhanSinhVienDangKy(@Param("maNganh") long maNganh, @Param("khoa") int khoa);
-@Query(value = "SELECT * FROM hoc_phan WHERE ma_hoc_phan IN " +
-        "(SELECT ma_hoc_phan FROM hoc_phan_theo_nien_giam WHERE ma_hoc_ky_nien_giam IN " +
-        "(SELECT ma_hoc_ky_nien_giam FROM hoc_ky_nien_giam " +
-        "WHERE ma_nganh = 3 AND khoa = 16))",
-        nativeQuery = true)
-List<HocPhan> findHocPhanSinhVienDangKy(@Param("maNganh") long maNganh, @Param("khoa") int khoa);
+//@Query(value = "SELECT * FROM hoc_phan WHERE ma_hoc_phan IN " +
+//        "(SELECT ma_hoc_phan FROM hoc_phan_theo_nien_giam WHERE ma_hoc_ky_nien_giam IN " +
+//        "(SELECT ma_hoc_ky_nien_giam FROM hoc_ky_nien_giam " +
+//        "WHERE ma_nganh = :maNganh AND khoa = :khoa))",
+//        nativeQuery = true)
+//    List<HocPhan> findHocPhanSinhVienDangKy(@Param("maNganh") long maNganh, @Param("khoa") int khoa);
+
+
+        @Query(value = "SELECT * FROM hoc_phan WHERE ma_hoc_phan IN " +
+                "(SELECT ma_hoc_phan FROM hoc_phan_theo_nien_giam WHERE ma_hoc_ky_nien_giam IN " +
+                "(SELECT ma_hoc_ky_nien_giam FROM hoc_ky_nien_giam " +
+                "WHERE ma_nganh = :maNganh AND khoa = :khoa))",
+                nativeQuery = true)
+        List<HocPhan> findHocPhanSinhVienDangKy(@Param("maNganh") long maNganh, @Param("khoa") int khoa);
+
+
+
 }
