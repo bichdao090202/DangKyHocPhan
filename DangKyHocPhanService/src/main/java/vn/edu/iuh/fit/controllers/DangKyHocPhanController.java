@@ -130,6 +130,7 @@ public class DangKyHocPhanController {
     @Transactional
     public boolean huyDangKyHocPhan(@RequestParam("maSV")String maSV, @RequestParam("maHocPhan")String maHocPhan) throws RuntimeException{
         try{
+
             Optional<SinhVien> sv = sinhVienRepository.findById(Long.parseLong(maSV));
             Optional<HocPhan> hp = hocPhanRepository.findById(Long.parseLong(maHocPhan));
             if(sv.isPresent() && hp.isPresent()){
