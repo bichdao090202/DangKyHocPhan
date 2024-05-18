@@ -26,7 +26,7 @@ public class HocPhanDaDangKy {
     @Id
     @ManyToOne
     @JoinColumn(name = "maHocPhan")
-    @JsonIgnoreProperties(value = {"soTinChiLyThuyet", "soTinChiThucHanh", "hocKy", "khoa", "nganh"})
+    @JsonIgnoreProperties(value = {"hocKy", "khoa", "nganh"})
     private HocPhan maHocPhan;
 
     private float hocKyDangKy;
