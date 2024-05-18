@@ -11,8 +11,10 @@ import lombok.*;
 @ToString
 public class GiangVien {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_ma_giang_vien")
-    @SequenceGenerator(name = "seq_ma_giang_vien", sequenceName = "seq_ma_giang_vien", initialValue = 5000)
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_ma_giang_vien")
+//    @SequenceGenerator(name = "seq_ma_giang_vien", sequenceName = "seq_ma_giang_vien", initialValue = 5000)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "table_gen_giang_vien")
+    @TableGenerator(name = "table_gen_giang_vien", table = "id_gen_giang_vien", pkColumnName = "gen_name_giang_vien", valueColumnName = "gen_val_giang_vien", initialValue = 5000, allocationSize = 50)
     private long maGiangVien;
     private String tenGiangVien;
     @ManyToOne

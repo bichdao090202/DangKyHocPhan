@@ -1,4 +1,4 @@
-package vn.edu.iuh.fit.hocphanservice.model;
+package vn.edu.iuh.fit.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,6 +8,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@ToString
 public class HocPhanTienQuyet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -18,11 +19,6 @@ public class HocPhanTienQuyet {
     public HocPhanTienQuyet(long maHocPhan, long maHocPhanTienQuyet) {
         this.maHocPhan = maHocPhan;
         this.maHocPhanTienQuyet = maHocPhanTienQuyet;
-    }
-
-    @Override
-    public String toString() {
-        return  maHocPhanTienQuyet + "";
     }
 
 
