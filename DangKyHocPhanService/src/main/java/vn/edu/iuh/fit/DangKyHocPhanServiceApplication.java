@@ -8,7 +8,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@OpenAPIDefinition(servers = {@Server(url = "/HocPhanService", description = "Default Server URL")})
+@OpenAPIDefinition(servers = {@Server(url = "/DangKyHocPhanService", description = "Default Server URL")})
 public class DangKyHocPhanServiceApplication {
 
     public static void main(String[] args) {
