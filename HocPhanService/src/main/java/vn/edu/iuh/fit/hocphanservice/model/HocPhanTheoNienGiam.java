@@ -15,8 +15,8 @@ public class HocPhanTheoNienGiam {
     @ManyToOne
     @JoinColumn(name = "maHocPhan")
     private HocPhan hocPhan;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "maHocKy")
+    @ManyToOne
+    @JoinColumn(name = "maHocKyNienGiam")
     private HocKyNienGiam hocKyNienGiam;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "maNhomHocPhanTuChon")
@@ -40,7 +40,7 @@ public class HocPhanTheoNienGiam {
     public String toString() {
         return "HocPhanTheoNienGiam{" +
                 "id=" + id +
-                ", hocPhan=" + hocPhan +
-                ", hocKyNienGiam=" + hocKyNienGiam;
+                ", hocPhan=" + hocPhan ;
+//                ", hocKyNienGiam=" + hocKyNienGiam;
     }
 }

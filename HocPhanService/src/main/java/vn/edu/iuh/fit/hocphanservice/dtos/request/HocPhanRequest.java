@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class HocPhanRequest {
-    private String ten;
+    private String tenHocPhan;
     private long maNganh;
     private long maKhoa;
     private int soTinChiLyThuyet;
@@ -16,7 +16,7 @@ public class HocPhanRequest {
 
 //    body example:
 //    {
-//        "ten": "Lập trình thiết bị di động",
+//        "tenHocPhan": "Lập trình thiết bị di động",
 //        "maNganh": 3,
 //        "maKhoa": null,
 //        "soTinChiLyThuyet": 3,

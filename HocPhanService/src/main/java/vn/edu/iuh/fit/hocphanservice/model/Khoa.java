@@ -15,7 +15,7 @@ public class Khoa {
     @Id
     private long maKhoa;
     private String tenKhoa;
-    @OneToMany(mappedBy = "khoa")
+    @OneToMany(mappedBy = "khoa",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Nganh> nganhs;
 
     public Khoa(String tenKhoa) {
