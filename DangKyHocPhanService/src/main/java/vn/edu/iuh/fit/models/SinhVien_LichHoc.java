@@ -26,6 +26,6 @@ public class SinhVien_LichHoc {
 
     @Override
     public String toString() {
-        return maSV.getMaSV() + maLichHoc.getMaLichHoc() + "";
+        return maSV.getMaSinhVien() + maLichHoc.getMaLichHoc() + "";
     }
 }

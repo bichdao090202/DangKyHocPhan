@@ -21,4 +21,15 @@ public class TaiKhoan {
         this.tenDangNhap = tenDangNhap;
     }
 
+    public TaiKhoan(SinhVien sinhVien) {
+        this.tenDangNhap = sinhVien.getMaSinhVien();
+    }
+
+    public TaiKhoan(GiangVien giangVien) {
+        this.tenDangNhap = giangVien.getMaGiangVien();
+    }
+
+    public TaiKhoan (GiaoVu giaoVu) {
+        this.tenDangNhap = giaoVu.getMaGiaoVu();
+    }
 }

@@ -1,7 +1,10 @@
 package vn.edu.iuh.fit.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+import vn.edu.iuh.fit.dtos.request.SinhVienRequest;
 import vn.edu.iuh.fit.models.Khoa;
 import vn.edu.iuh.fit.models.Nganh;
 import vn.edu.iuh.fit.repositories.HocPhanRepository;
@@ -19,6 +22,9 @@ public class KhoaNganhService {
     private NganhRepository nganhRepository;
     @Autowired
     private HocPhanRepository hocPhanRepository;
+    @Autowired
+    private RestTemplate restTemplate;
+    private String urlUserAuth = "http://localhost:9000/UserAuthenticationService/User/";
 
     public Khoa getKhoaById(long id) {
         return khoaRepository.findById(id).orElse(null);
@@ -42,7 +48,9 @@ public class KhoaNganhService {
         Khoa khoa = khoaRepository.findById(maKhoa).orElse(null);
         if (khoa == null)
             return null;
-        return nganhRepository.save(new Nganh(tenNganh, khoa));
+        nganh = nganhRepository.save(new Nganh(tenNganh, khoa));
+        restTemplate.postForObject(urlUserAuth+"createNganh", nganh, Void.class);
+        return nganh;
     }
 
     public Khoa updateTenKhoa(long maKhoa, String tenKhoa) {
