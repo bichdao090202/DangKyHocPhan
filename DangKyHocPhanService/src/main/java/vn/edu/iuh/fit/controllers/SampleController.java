@@ -2,12 +2,15 @@ package vn.edu.iuh.fit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.iuh.fit.dtos.request.HocKyNienGiamRequest;
 import vn.edu.iuh.fit.dtos.request.HocPhanRequest;
+import vn.edu.iuh.fit.dtos.res.HocPhanResponse;
 import vn.edu.iuh.fit.dtos.res.HocPhanTheoNienGiamResponse;
 import vn.edu.iuh.fit.models.HocKyNienGiam;
+import vn.edu.iuh.fit.models.HocPhan;
 import vn.edu.iuh.fit.models.Khoa;
 import vn.edu.iuh.fit.repositories.HocKyNienGiamRepository;
 import vn.edu.iuh.fit.repositories.HocPhanRepository;
@@ -80,8 +83,8 @@ public class SampleController {
         return true;
     }
 
-    @GetMapping ("/createDataSample4")
-    List<HocPhanTheoNienGiamResponse> getNienGiamByNganhAndKhoa(){
-        return hocPhanService.getNienGiamByNganhAndKhoa(3,16);
+    @GetMapping("/createDataSample4/{maNganh}/{khoa}")
+    List<HocPhanResponse> findDanhSachHocPhanSinhVienCoTheDangKy(@PathVariable long maNganh, @PathVariable int khoa){
+        return hocPhanService.findDanhSachHocPhanSinhVienCoTheDangKy(maNganh,khoa);
     }
 }

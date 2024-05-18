@@ -149,4 +149,14 @@ public class HocPhanService {
         return hocPhanRepository.existsById(id);
     }
 
+    public List<HocPhanResponse> findDanhSachHocPhanSinhVienCoTheDangKy( long maNganh, int khoa) {
+        List<HocPhanResponse> hocPhanResponses = new ArrayList<>();
+        List<HocPhan> hocPhans = hocPhanRepository.findHocPhanSinhVienDangKy(maNganh, khoa);
+        for (HocPhan hocPhan : hocPhans) {
+            HocPhanResponse hocPhanResponse = new HocPhanResponse(hocPhan);
+            hocPhanResponses.add(hocPhanResponse);
+        }
+        return hocPhanResponses;
+    }
+
 }
