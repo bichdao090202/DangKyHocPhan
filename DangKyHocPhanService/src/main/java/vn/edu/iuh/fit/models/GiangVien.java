@@ -24,13 +24,9 @@ public class GiangVien {
     @JsonIgnore
     private List<LopHocPhan> lopHocPhanList;
 
-public GiangVien(long maGiangVien) {
+    public GiangVien(long maGiangVien) {
         this.maGiangVien = maGiangVien;
     }
-
-
-
-
 
 
 }

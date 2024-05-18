@@ -3,10 +3,7 @@ package vn.edu.iuh.fit.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import vn.edu.iuh.fit.pks.SinhVien_HocPhanPK;
 
 import java.time.LocalDate;
@@ -17,6 +14,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @IdClass(SinhVien_HocPhanPK.class)
 public class HocPhanDaDangKy {
     @Id

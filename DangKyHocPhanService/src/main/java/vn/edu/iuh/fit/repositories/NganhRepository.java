@@ -5,7 +5,7 @@ import vn.edu.iuh.fit.models.Khoa;
 import vn.edu.iuh.fit.models.Nganh;
 
 public interface NganhRepository extends JpaRepository<Nganh, Long> {
-    boolean existsByTenNganh(String tenNganh);
-
     boolean existsByKhoa(Khoa khoa);
+
+    Nganh findByTenNganh(String tenNganh);
 }

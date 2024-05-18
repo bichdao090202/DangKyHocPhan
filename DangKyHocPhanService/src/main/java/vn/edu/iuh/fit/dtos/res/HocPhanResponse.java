@@ -13,9 +13,7 @@ public class HocPhanResponse {
     private String ten;
     private int soTinChiLythuyet;
     private int soTinChiThuchanh;
-    private int nhomThucHanh;
     private boolean batBuoc;
-    private boolean ketQua;
 
     public HocPhanResponse(HocPhan hocPhan){
         this.maHocPhan = hocPhan.getMaHocPhan();
