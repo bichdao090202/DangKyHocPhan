@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vn.edu.iuh.fit.dtos.request.*;
+
 import vn.edu.iuh.fit.dtos.res.HocPhanResponse;
 import vn.edu.iuh.fit.dtos.res.LopHocPhanResponse;
 import vn.edu.iuh.fit.models.HocPhan;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("SampleController")
+@CrossOrigin("*")
 public class SampleController {
     @Autowired
     private HocPhanService hocPhanService;
