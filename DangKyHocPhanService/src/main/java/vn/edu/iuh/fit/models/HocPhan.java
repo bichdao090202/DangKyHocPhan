@@ -31,9 +31,13 @@ public class HocPhan {
     private List<LopHocPhan> lopHocPhanList;
     @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "maHocPhan")
+    @JsonIgnore
     private List<HocPhanTienQuyet> hocPhanTienQuyet;
     private boolean thucHanh;
     private boolean monDaiCuong;
+    @OneToMany(mappedBy = "maHocPhan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<HocPhanDaDangKy> hocPhanDaDangKyList;
 
     public HocPhan(String ten, Nganh nganh, Khoa khoa, int soTinChiLyThuyet, int soTinChiThucHanh) {
         this.ten = ten;

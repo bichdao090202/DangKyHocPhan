@@ -27,4 +27,7 @@ public class SinhVien {
     @OneToMany(mappedBy = "maSV")
     @JsonIgnore
     private List<SinhVien_LichHoc> sinhVienLichHocList;
+    @OneToMany(mappedBy = "maSV")
+    @JsonIgnore
+    private List<HocPhanDaDangKy> hocPhanDaDangKyList;
 }
