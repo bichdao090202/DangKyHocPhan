@@ -12,6 +12,7 @@ import java.util.List;
 @Table(name = "hoc_phan")
 @Getter
 @Setter
+@ToString
 public class HocPhan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -33,8 +34,6 @@ public class HocPhan {
     @JoinColumn(name = "maHocPhan")
     @JsonIgnore
     private List<HocPhanTienQuyet> hocPhanTienQuyet;
-    private boolean thucHanh;
-    private boolean monDaiCuong;
     @OneToMany(mappedBy = "maHocPhan", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<HocPhanDaDangKy> hocPhanDaDangKyList;
@@ -46,8 +45,6 @@ public class HocPhan {
         this.soTinChiLyThuyet = soTinChiLyThuyet;
         this.soTinChiThucHanh = soTinChiThucHanh;
         this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
-        this.thucHanh = soTinChiThucHanh > 0;
-        this.monDaiCuong = nganh == null && khoa == null;
     }
 
     public HocPhan(long maHocPhan) {

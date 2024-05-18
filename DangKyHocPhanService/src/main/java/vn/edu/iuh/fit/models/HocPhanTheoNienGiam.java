@@ -8,6 +8,7 @@ import lombok.*;
 @Entity
 @Getter
 @Setter
+@ToString
 public class HocPhanTheoNienGiam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +37,5 @@ public class HocPhanTheoNienGiam {
         this.hocKyNienGiam = new HocKyNienGiam(maHocKyNienGiam);
     }
 
-    @Override
-    public String toString() {
-        return "HocPhanTheoNienGiam{" +
-                "id=" + id +
-                ", hocPhan=" + hocPhan ;
-//                ", hocKyNienGiam=" + hocKyNienGiam;
-    }
+
 }

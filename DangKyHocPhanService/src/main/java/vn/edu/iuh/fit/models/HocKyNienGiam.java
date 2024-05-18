@@ -1,10 +1,8 @@
 package vn.edu.iuh.fit.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.List;
 
 @AllArgsConstructor
@@ -12,6 +10,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
 public class HocKyNienGiam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,16 +35,4 @@ public class HocKyNienGiam {
         this.maHocKyNienGiam = maHocKyNienGiam;
     }
 
-    @Override
-    public String toString() {
-        return "HocKyNienGiam{" +
-                "ma=" + maHocKyNienGiam +
-                ", nganh=" + nganh +
-                ", khoa=" + khoa +
-                ", hocKy=" + hocKy +
-                ", soTinChi=" + soTinChi +
-//                ", nhomHocPhanTuChon=" + nhomHocPhanTuChon +
-                ", hocPhanTheoNienGiam=" + hocPhanTheoNienGiam +
-                '}';
-    }
 }

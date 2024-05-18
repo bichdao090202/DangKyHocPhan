@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import vn.edu.iuh.fit.models.Khoa;
 
 public interface KhoaRepository extends JpaRepository<Khoa, Long> {
-    boolean existsByTenKhoa(String tenKhoa);
+    Khoa findByTenKhoa(String tenKhoa);
 }
