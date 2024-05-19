@@ -22,6 +22,7 @@ public class SinhVien {
     @ManyToOne
     @JoinColumn(name = "maNganh")
     private Nganh nganh;
+    private int khoa;
     @OneToMany(mappedBy = "maSV")
     @JsonIgnore
     private List<SinhVien_LichHoc> sinhVienLichHocList;
@@ -32,5 +33,6 @@ public class SinhVien {
     public SinhVien(SinhVienRequest sinhVienRequest){
         this.maSV = sinhVienRequest.getMaSinhVien();
         this.nganh = new Nganh(sinhVienRequest.getMaNganh());
+        this.khoa = sinhVienRequest.getKhoa();
     }
 }

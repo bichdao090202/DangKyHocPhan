@@ -18,4 +18,8 @@ public class Nganh {
     public Nganh(long maNganh) {
         this.maNganh = maNganh;
     }
+
+    public Nganh(String maNganh) {
+        this.maNganh = Long.parseLong(maNganh);
+    }
 }

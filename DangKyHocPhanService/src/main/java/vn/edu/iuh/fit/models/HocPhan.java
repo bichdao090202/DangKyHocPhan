@@ -21,7 +21,6 @@ public class HocPhan {
     private int soTinChi;
     private int soTinChiLyThuyet;
     private int soTinChiThucHanh;
-    private int hocKy;
     @ManyToOne @JoinColumn(name = "maKhoa")
     private Khoa khoa;
     @ManyToOne
@@ -38,8 +37,8 @@ public class HocPhan {
     @JsonIgnore
     private List<HocPhanDaDangKy> hocPhanDaDangKyList;
 
-    public HocPhan(String ten, Nganh nganh, Khoa khoa, int soTinChiLyThuyet, int soTinChiThucHanh) {
-        this.ten = ten;
+    public HocPhan(String tenHocPhan, Nganh nganh, Khoa khoa, int soTinChiLyThuyet, int soTinChiThucHanh) {
+        this.ten = tenHocPhan;
         this.nganh = nganh;
         this.khoa = khoa;
         this.soTinChiLyThuyet = soTinChiLyThuyet;

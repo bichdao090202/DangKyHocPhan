@@ -1,21 +1,18 @@
 package vn.edu.iuh.fit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.dtos.request.*;
 
-import vn.edu.iuh.fit.dtos.res.HocPhanResponse;
-import vn.edu.iuh.fit.dtos.res.LopHocPhanResponse;
+
+import vn.edu.iuh.fit.dtos.response.HocPhanResponse;
+import vn.edu.iuh.fit.dtos.response.LopHocPhanResponse;
 import vn.edu.iuh.fit.models.HocPhan;
 import vn.edu.iuh.fit.models.Khoa;
-import vn.edu.iuh.fit.models.LopHocPhan;
 import vn.edu.iuh.fit.services.HocPhanService;
 import vn.edu.iuh.fit.services.KhoaNganhService;
 import vn.edu.iuh.fit.services.LopHocPhanService;
-import vn.edu.iuh.fit.services.SampleService;
+import vn.edu.iuh.fit.services.UserService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -32,7 +29,7 @@ public class SampleController {
     @Autowired
     private LopHocPhanService lopHocPhanService;
     @Autowired
-    private SampleService sampleService;
+    private UserService userService;
 
     @GetMapping("/createDataSample1")
     public Khoa createDataSample() {
@@ -87,11 +84,11 @@ public class SampleController {
         hocPhanService.createHocKyNienGiam(hocKyNienGiamRequest);
         HocKyNienGiamRequest hocKyNienGiamRequest1 = new HocKyNienGiamRequest(1, 16, 2, List.of(4L, 5L, 6L));
         hocPhanService.createHocKyNienGiam(hocKyNienGiamRequest1);
-        sampleService.createSinhVien(new SinhVienRequest(10001, 1));
-        sampleService.createSinhVien(new SinhVienRequest(10002, 1));
-        sampleService.createGiangVien(new GiangVienRequest(5001, "Giang vien 1", 1));
-        sampleService.createGiangVien(new GiangVienRequest(5002, "Giang vien 2", 2));
-        sampleService.createGiangVien(new GiangVienRequest(5003, "Giang vien 3", 1));
+        userService.createSinhVien(new SinhVienRequest(10001, 1,16));
+        userService.createSinhVien(new SinhVienRequest(10002, 2,17));
+        userService.createGiangVien(new GiangVienRequest(5001, "Giang vien 1", 1));
+        userService.createGiangVien(new GiangVienRequest(5002, "Giang vien 2", 2));
+        userService.createGiangVien(new GiangVienRequest(5003, "Giang vien 3", 1));
         return true;
     }
 

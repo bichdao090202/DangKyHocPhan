@@ -1,5 +1,6 @@
 package com.example.userauthenticationservice.model;
 
+import com.example.userauthenticationservice.dtos.request.GiaoVuRequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,6 +18,16 @@ public class GiaoVu {
 //    @SequenceGenerator(name = "seq_ma_giao_vu", sequenceName = "seq_ma_giao_vu", initialValue = 1000)
     private long maGiaoVu;
     private String tenGiaoVu;
+    private String ngaySinh;
+    private String gioiTinh;
+    private String diaChi;
+    private String soDienThoai;
+    private String email;
+    private String soCCCD;
+    private String soAtm;
+    @OneToOne
+    @JoinColumn(name = "maGiaoVu")
+    private TaiKhoan taiKhoan;
 
     public GiaoVu(String tenGiaoVu) {
         this.tenGiaoVu = tenGiaoVu;
@@ -24,5 +35,16 @@ public class GiaoVu {
 
     public GiaoVu(long maGiaoVu) {
         this.maGiaoVu = maGiaoVu;
+    }
+
+    public GiaoVu (GiaoVuRequest giaoVuRequest) {
+        this.tenGiaoVu = giaoVuRequest.getTenGiaoVu();
+        this.ngaySinh = giaoVuRequest.getNgaySinh();
+        this.gioiTinh = giaoVuRequest.getGioiTinh();
+        this.diaChi = giaoVuRequest.getDiaChi();
+        this.soDienThoai = giaoVuRequest.getSoDienThoai();
+        this.email = giaoVuRequest.getEmail();
+        this.soCCCD = giaoVuRequest.getSoCCCD();
+        this.soAtm = giaoVuRequest.getSoTaiKhoanNganHang();
     }
 }
