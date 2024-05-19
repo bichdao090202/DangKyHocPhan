@@ -1,10 +1,7 @@
 package vn.edu.iuh.fit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.models.LichHoc;
 import vn.edu.iuh.fit.models.LopHocPhan;
 import vn.edu.iuh.fit.repositories.LichHocRepository;
@@ -14,7 +11,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/DangKyHocPhanService")
+@RequestMapping("/DangKyHocPhan")
+@CrossOrigin("*")
 public class LichHocController {
     @Autowired
     private LichHocRepository lichHocRepository;
@@ -34,4 +32,5 @@ public class LichHocController {
         }
         return null;
     }
+
 }

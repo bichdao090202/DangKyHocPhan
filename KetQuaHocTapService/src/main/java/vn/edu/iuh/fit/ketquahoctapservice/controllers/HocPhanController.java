@@ -8,6 +8,7 @@ import vn.edu.iuh.fit.ketquahoctapservice.services.HocPhanService;
 
 @RestController
 @RequestMapping("/HocPhan")
+@CrossOrigin("*")
 public class HocPhanController {
     @Autowired
     private HocPhanService hocPhanService;

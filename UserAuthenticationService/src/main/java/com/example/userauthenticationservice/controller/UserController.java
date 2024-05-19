@@ -11,8 +11,10 @@ import com.example.userauthenticationservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
-@RequestMapping("User")
+@RequestMapping("/User")
+@CrossOrigin("*")
 public class UserController {
     @Autowired
     private UserService userService;

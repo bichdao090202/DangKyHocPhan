@@ -17,7 +17,7 @@ public class HocPhanResponse {
 
     public HocPhanResponse(HocPhan hocPhan){
         this.maHocPhan = hocPhan.getMaHocPhan();
-        this.tenHocPhan = hocPhan.getTenHocPhan();
+        this.tenHocPhan = hocPhan.getTen();
         this.soTinChiLythuyet = hocPhan.getSoTinChiLyThuyet();
         this.soTinChiThuchanh = hocPhan.getSoTinChiThucHanh();
     }

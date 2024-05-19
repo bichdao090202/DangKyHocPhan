@@ -2,7 +2,6 @@ package vn.edu.iuh.fit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.models.Khoa;
 import vn.edu.iuh.fit.models.Nganh;
 import vn.edu.iuh.fit.services.KhoaNganhService;
@@ -10,6 +9,7 @@ import vn.edu.iuh.fit.services.KhoaNganhService;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("KhoaNganh")
 public class KhoaNganhController {
     @Autowired

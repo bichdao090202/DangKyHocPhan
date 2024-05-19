@@ -17,7 +17,7 @@ public class HocPhan {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long maHocPhan;
-    private String tenHocPhan;
+    private String ten;
     private int soTinChi;
     private int soTinChiLyThuyet;
     private int soTinChiThucHanh;
@@ -38,7 +38,7 @@ public class HocPhan {
     private List<HocPhanDaDangKy> hocPhanDaDangKyList;
 
     public HocPhan(String tenHocPhan, Nganh nganh, Khoa khoa, int soTinChiLyThuyet, int soTinChiThucHanh) {
-        this.tenHocPhan = tenHocPhan;
+        this.ten = tenHocPhan;
         this.nganh = nganh;
         this.khoa = khoa;
         this.soTinChiLyThuyet = soTinChiLyThuyet;

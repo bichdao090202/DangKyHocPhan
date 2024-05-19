@@ -26,6 +26,7 @@ public class KetQuaHocTapController {
 
     @GetMapping("/getKetQuaSinhVien/{maSinhVien}")
     public KetQuaHocTapSinhVienDetail getKetQuaSinhVien(@PathVariable long maSinhVien) {
+        System.out.println(maSinhVien);
         return ketQuaHocTapService.getKetQuaSinhVien(maSinhVien);
     }
 }

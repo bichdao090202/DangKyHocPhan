@@ -25,7 +25,7 @@ public class LopHocPhanResponse {
         this.maLopHocPhan = lopHocPhan.getMaLopHocPhan();
         this.soLuongHienTai = lopHocPhan.getSoLuongHienTai();
         this.soLuongToiDa = lopHocPhan.getSoLuongToiDa();
-        this.tenHocPhan = lopHocPhan.getHocPhan().getTenHocPhan();
+        this.tenHocPhan = lopHocPhan.getHocPhan().getTen();
         this.tenGiangVien = lopHocPhan.getGiangVien().getTenGiangVien();
         this.ngayMoDangKy = lopHocPhan.getNgayMoDangKy();
         this.ngayBatDau = lopHocPhan.getNgayBatDau();

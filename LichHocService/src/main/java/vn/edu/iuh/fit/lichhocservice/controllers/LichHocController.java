@@ -2,10 +2,7 @@ package vn.edu.iuh.fit.lichhocservice.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.lichhocservice.model.GiangVien;
 import vn.edu.iuh.fit.lichhocservice.model.LichHoc;
 import vn.edu.iuh.fit.lichhocservice.model.SinhVien;
@@ -22,7 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/LichHocService")
+@RequestMapping("/LichHoc")
+@CrossOrigin("*")
 public class LichHocController {
     @Autowired
     private LichHocRepository lichHocRepository;
@@ -39,12 +37,12 @@ public class LichHocController {
     @Autowired
     private LichHocService lichHocService;
 
-    @GetMapping("/lichHoc")
+    @GetMapping("/")
     public List<LichHoc> lichhoc() {
         return lichHocRepository.findAll();
     }
 
-    @GetMapping("/lichHoc/giangVien")
+    @GetMapping("/giangVien")
     public List<LichHoc> getLichHocByGiangVien(@RequestParam("maGV") String maGV) {
         try {
             Optional<GiangVien> gv = giangVienRepository.findById(Long.parseLong(maGV));
@@ -56,7 +54,7 @@ public class LichHocController {
         }
     }
 
-    @GetMapping("/lichHoc/sinhVien")
+    @GetMapping("/sinhVien")
     public List<LichHoc> getLichHocBySinhVien(@RequestParam("maSV") String maSV) {
         try {
             Optional<SinhVien> sv = sinhVienRepository.findById(Long.parseLong(maSV));
