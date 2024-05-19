@@ -10,12 +10,7 @@ import com.example.userauthenticationservice.model.SinhVien;
 import com.example.userauthenticationservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
 
-import java.util.ArrayList;
-import java.util.List;
-=======
->>>>>>> sonpham
 
 @RestController
 @RequestMapping("/User")
