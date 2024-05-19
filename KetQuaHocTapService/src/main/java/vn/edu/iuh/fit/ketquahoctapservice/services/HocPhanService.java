@@ -10,8 +10,8 @@ public class HocPhanService {
     @Autowired
     private HocPhanRepository hocPhanRepository;
 
-    public HocPhan createHocPhan(HocPhan hocPhan) {
-        return hocPhanRepository.save(hocPhan);
+    public void createBanSaoHocPhan(HocPhan hocPhan) {
+        hocPhanRepository.save(hocPhan);
     }
 
     public HocPhan getHocPhanById(long id) {

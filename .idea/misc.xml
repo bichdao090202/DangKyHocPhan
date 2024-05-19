@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/DangKyHocPhanService" />
+    <file type="web" url="file://$PROJECT_DIR$/gateway-api" />
+    <file type="web" url="file://$PROJECT_DIR$/HocPhanService" />
+    <file type="web" url="file://$PROJECT_DIR$/iuh_ktpm_nhom24" />
+    <file type="web" url="file://$PROJECT_DIR$/KetQuaHocTapService" />
+    <file type="web" url="file://$PROJECT_DIR$/LichHocService" />
+    <file type="web" url="file://$PROJECT_DIR$/UserAuthenticationService" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="17" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>
