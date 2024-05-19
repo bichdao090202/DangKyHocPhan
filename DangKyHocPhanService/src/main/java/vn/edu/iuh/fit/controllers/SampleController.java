@@ -3,14 +3,10 @@ package vn.edu.iuh.fit.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.dtos.request.*;
-<<<<<<< HEAD
 
-import vn.edu.iuh.fit.dtos.res.HocPhanResponse;
-import vn.edu.iuh.fit.dtos.res.LopHocPhanResponse;
-=======
+
 import vn.edu.iuh.fit.dtos.response.HocPhanResponse;
 import vn.edu.iuh.fit.dtos.response.LopHocPhanResponse;
->>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
 import vn.edu.iuh.fit.models.HocPhan;
 import vn.edu.iuh.fit.models.Khoa;
 import vn.edu.iuh.fit.services.HocPhanService;

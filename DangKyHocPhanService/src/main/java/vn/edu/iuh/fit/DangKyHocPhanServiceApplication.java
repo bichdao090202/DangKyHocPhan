@@ -5,12 +5,9 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-<<<<<<< HEAD
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-=======
->>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
 
 @SpringBootApplication
 @EnableDiscoveryClient

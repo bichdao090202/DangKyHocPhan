@@ -24,8 +24,4 @@ public class SinhVien_LichHoc {
     @JoinColumn(name = "maLichHoc")
     private LichHoc maLichHoc;
 
-    @Override
-    public String toString() {
-        return maSV.getMaSinhVien() + maLichHoc.getMaLichHoc() + "";
-    }
 }

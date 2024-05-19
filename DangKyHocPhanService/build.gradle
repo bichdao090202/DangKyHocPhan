@@ -28,14 +28,10 @@ ext {
     set('springCloudVersion', "2023.0.1")
 }
 dependencies {
-<<<<<<< HEAD
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-=======
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
->>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
+
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'

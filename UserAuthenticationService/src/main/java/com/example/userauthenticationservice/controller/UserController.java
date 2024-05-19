@@ -10,20 +10,10 @@ import com.example.userauthenticationservice.model.SinhVien;
 import com.example.userauthenticationservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-<<<<<<< HEAD
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RestController
 @RequestMapping("/User")
 @CrossOrigin("*")
-
-=======
-
-@RestController
-@RequestMapping("User")
->>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
 public class UserController {
     @Autowired
     private UserService userService;

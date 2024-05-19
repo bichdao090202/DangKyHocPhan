@@ -14,13 +14,8 @@ import vn.edu.iuh.fit.services.HocPhanService;
 import java.util.List;
 
 @RestController
-<<<<<<< HEAD
 @RequestMapping("/HocPhanService")
 @CrossOrigin("*")
-
-=======
-@RequestMapping("/HocPhan")
->>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
 public class HocPhanController {
     @Autowired
     private HocPhanService hocPhanService;

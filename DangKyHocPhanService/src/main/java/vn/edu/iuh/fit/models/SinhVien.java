@@ -18,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 public class SinhVien {
     @Id
-    private long maSinhVien;
+    private long maSV;
     @ManyToOne
     @JoinColumn(name = "maNganh")
     private Nganh nganh;
@@ -31,7 +31,7 @@ public class SinhVien {
     private List<HocPhanDaDangKy> hocPhanDaDangKyList;
 
     public SinhVien(SinhVienRequest sinhVienRequest){
-        this.maSinhVien = sinhVienRequest.getMaSinhVien();
+        this.maSV = sinhVienRequest.getMaSinhVien();
         this.nganh = new Nganh(sinhVienRequest.getMaNganh());
         this.khoa = sinhVienRequest.getKhoa();
     }
