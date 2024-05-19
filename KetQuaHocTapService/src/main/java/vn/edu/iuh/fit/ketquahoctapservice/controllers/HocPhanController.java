@@ -19,9 +19,8 @@ public class HocPhanController {
 //        "soTinChiThucHanh": 1
 //    }
     @PostMapping("/createHocPhan")
-    public HocPhan createHocPhan(@RequestBody HocPhanRequest hocPhanRequest) {
-        HocPhan hocPhan = hocPhanService.createHocPhan(new HocPhan(hocPhanRequest));
-        return hocPhan;
+    public void createBanSaoHocPhan(@RequestBody HocPhanRequest hocPhanRequest) {
+        hocPhanService.createBanSaoHocPhan(new HocPhan(hocPhanRequest));
     }
 
     @PostMapping("/deleteHocPhan/{id}")

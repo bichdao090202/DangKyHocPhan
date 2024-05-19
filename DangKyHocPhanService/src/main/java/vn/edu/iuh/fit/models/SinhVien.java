@@ -18,10 +18,11 @@ import java.util.List;
 @NoArgsConstructor
 public class SinhVien {
     @Id
-    private long maSV;
+    private long maSinhVien;
     @ManyToOne
     @JoinColumn(name = "maNganh")
     private Nganh nganh;
+    private int khoa;
     @OneToMany(mappedBy = "maSV")
     @JsonIgnore
     private List<SinhVien_LichHoc> sinhVienLichHocList;
@@ -30,7 +31,8 @@ public class SinhVien {
     private List<HocPhanDaDangKy> hocPhanDaDangKyList;
 
     public SinhVien(SinhVienRequest sinhVienRequest){
-        this.maSV = sinhVienRequest.getMaSinhVien();
+        this.maSinhVien = sinhVienRequest.getMaSinhVien();
         this.nganh = new Nganh(sinhVienRequest.getMaNganh());
+        this.khoa = sinhVienRequest.getKhoa();
     }
 }

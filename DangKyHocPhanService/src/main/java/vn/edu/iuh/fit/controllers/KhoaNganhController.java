@@ -2,6 +2,10 @@ package vn.edu.iuh.fit.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+<<<<<<< HEAD
+=======
+import org.springframework.web.client.RestTemplate;
+>>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
 import vn.edu.iuh.fit.models.Khoa;
 import vn.edu.iuh.fit.models.Nganh;
 import vn.edu.iuh.fit.services.KhoaNganhService;
@@ -9,8 +13,12 @@ import vn.edu.iuh.fit.services.KhoaNganhService;
 import java.util.List;
 
 @RestController
+<<<<<<< HEAD
 @CrossOrigin("*")
 
+=======
+@RequestMapping("KhoaNganh")
+>>>>>>> f4eb7a0fcd5b34fccb97f0163a0089a8a578bf2d
 public class KhoaNganhController {
     @Autowired
     private KhoaNganhService khoaNganhService;

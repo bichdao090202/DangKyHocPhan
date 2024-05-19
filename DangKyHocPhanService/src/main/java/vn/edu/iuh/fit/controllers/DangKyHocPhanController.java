@@ -85,7 +85,7 @@ public class DangKyHocPhanController {
 
                 List<HocPhanTienQuyet> hptq = hocPhanService.getHocPhanTienQuyet(hocPhan.getMaHocPhan());
                 for(HocPhanTienQuyet h : hptq){
-                    Optional<HocPhanDaDangKy> hpdktq = hocPhanDaDangKyRepository.findById(new SinhVien_HocPhanPK(sinhVien.getMaSV(), h.getMaHocPhan()));
+                    Optional<HocPhanDaDangKy> hpdktq = hocPhanDaDangKyRepository.findById(new SinhVien_HocPhanPK(sinhVien.getMaSinhVien(), h.getMaHocPhan()));
                     if(hpdktq.isEmpty() || hpdktq.get().getHocKyDangKy() == Float.parseFloat(hocKy)){
                         return "Học phần có môn học phần tiên quyết chưa được đăng ký hoặc đang đăng kí trong học kỳ này!";
                     }
