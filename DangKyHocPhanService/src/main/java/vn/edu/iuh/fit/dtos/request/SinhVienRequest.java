@@ -12,4 +12,5 @@ import lombok.ToString;
 public class SinhVienRequest {
     private long maSinhVien;
     private long maNganh;
+    private int khoa;
 }

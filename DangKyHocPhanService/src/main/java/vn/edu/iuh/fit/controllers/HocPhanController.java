@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import vn.edu.iuh.fit.dtos.request.HocKyNienGiamRequest;
 import vn.edu.iuh.fit.dtos.request.HocPhanRequest;
 import vn.edu.iuh.fit.dtos.request.HocPhanTheoNienGiamRequest;
-import vn.edu.iuh.fit.dtos.res.HocPhanTheoNienGiamResponse;
+import vn.edu.iuh.fit.dtos.response.HocPhanTheoNienGiamResponse;
 import vn.edu.iuh.fit.models.HocKyNienGiam;
 import vn.edu.iuh.fit.models.HocPhan;
 import vn.edu.iuh.fit.models.HocPhanTienQuyet;
@@ -16,7 +16,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/HocPhanService")
 @CrossOrigin("*")
-
 public class HocPhanController {
     @Autowired
     private HocPhanService hocPhanService;

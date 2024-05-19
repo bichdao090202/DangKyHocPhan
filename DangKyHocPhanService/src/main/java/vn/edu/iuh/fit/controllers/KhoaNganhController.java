@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin("*")
-
+@RequestMapping("KhoaNganh")
 public class KhoaNganhController {
     @Autowired
     private KhoaNganhService khoaNganhService;

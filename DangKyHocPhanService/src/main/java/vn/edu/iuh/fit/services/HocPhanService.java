@@ -2,11 +2,12 @@ package vn.edu.iuh.fit.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 import vn.edu.iuh.fit.dtos.request.HocKyNienGiamRequest;
 import vn.edu.iuh.fit.dtos.request.HocPhanRequest;
 import vn.edu.iuh.fit.dtos.request.HocPhanTheoNienGiamRequest;
-import vn.edu.iuh.fit.dtos.res.HocPhanResponse;
-import vn.edu.iuh.fit.dtos.res.HocPhanTheoNienGiamResponse;
+import vn.edu.iuh.fit.dtos.response.HocPhanResponse;
+import vn.edu.iuh.fit.dtos.response.HocPhanTheoNienGiamResponse;
 import vn.edu.iuh.fit.models.*;
 import vn.edu.iuh.fit.repositories.*;
 
@@ -29,6 +30,9 @@ public class HocPhanService {
     private HocPhanTheoNienGiamRepository hocPhanTheoNienGiamRepository;
     @Autowired
     private NhomHocPhanTuChonRepository nhomHocPhanTuChonRepository;
+    @Autowired
+    private RestTemplate restTemplate;
+    private String urlKQHT = "http://localhost:9000/KetQuaHocTapService/HocPhan/";
 
     public HocPhan createHocPhan(HocPhanRequest hocPhanRequest) {
         if ((hocPhanRequest.getMaKhoa() != 0 && !khoaRepository.existsById(hocPhanRequest.getMaKhoa()))
@@ -40,7 +44,9 @@ public class HocPhanService {
                 hocPhanRequest.getMaKhoa() == 0 ? null : new Khoa(hocPhanRequest.getMaKhoa()),
                 hocPhanRequest.getSoTinChiLyThuyet(),
                 hocPhanRequest.getSoTinChiThucHanh());
-        return hocPhanRepository.save(hocPhan);
+        HocPhanResponse hocPhanResponse = new HocPhanResponse(hocPhanRepository.save(hocPhan));
+        restTemplate.postForObject(urlKQHT +"createHocPhan", hocPhanResponse, Void.class);
+        return hocPhan;
     }
 
     public HocPhan getHocPhanById(long id) {

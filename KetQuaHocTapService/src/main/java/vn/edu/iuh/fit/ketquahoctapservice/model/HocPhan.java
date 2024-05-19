@@ -17,7 +17,6 @@ public class HocPhan {
     private int soTinChi;
     private int soTinChiLyThuyet;
     private int soTinChiThucHanh;
-    private boolean thucHanh;
 
     /*
         Học phần có Nganh khác null là môn chỉ học trong ngành đó
@@ -31,7 +30,6 @@ public class HocPhan {
         this.soTinChiLyThuyet = hocPhanRequest.getSoTinChiLyThuyet();
         this.soTinChiThucHanh = hocPhanRequest.getSoTinChiThucHanh();
         this.soTinChi = hocPhanRequest.getSoTinChiLyThuyet() + hocPhanRequest.getSoTinChiThucHanh();
-        this.thucHanh = hocPhanRequest.getSoTinChiThucHanh() > 0;
     }
 
     public HocPhan(long maHocPhan) {
@@ -44,7 +42,6 @@ public class HocPhan {
         this.soTinChiLyThuyet = soTinChiLyThuyet;
         this.soTinChiThucHanh = soTinChiThucHanh;
         this.soTinChi = soTinChiLyThuyet + soTinChiThucHanh;
-        this.thucHanh = soTinChiThucHanh > 0;
     }
 
 

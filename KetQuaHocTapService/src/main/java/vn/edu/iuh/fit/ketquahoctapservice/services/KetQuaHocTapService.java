@@ -72,9 +72,10 @@ public class KetQuaHocTapService {
 
     public KetQuaHocTapSinhVienDetail getKetQuaSinhVien(long maSinhVien) {
         List<KetQuaHocKy> ketQuaHocKyList = ketQuaHocKyRepository.findByMaSinhVien(maSinhVien);
+        KetQuaHocTapSinhVienDetail ketQuaHocTapSinhVienDetail = new KetQuaHocTapSinhVienDetail(ketQuaHocKyList);
         if (ketQuaHocKyList.isEmpty())
             return null;    // sinh viên chưa có kết quả học tập
-        KetQuaHocTapSinhVienDetail ketQuaHocTapSinhVienDetail = new KetQuaHocTapSinhVienDetail(ketQuaHocKyList);
+
         System.out.println(ketQuaHocTapSinhVienDetail);
         return ketQuaHocTapSinhVienDetail;
     }
